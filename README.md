@@ -1,7 +1,7 @@
 # MattiaPrà - Autonoleggio
 
 ## Installazione
-  è necessario scrivere i dettagli del database (host, porta, username e password, nome del databse) nel file .env (sintassi CHIAVE=VALORE) situato nella root
+  È necessario scrivere i dettagli del database (host, porta, username e password, nome del databse) nel file .env (sintassi CHIAVE=VALORE) situato nella root
   Il database è composto da 6 tabelle abbastanza semplici --> importare dal backup 'noleggio_auto[EXPORT].sql'
 
   Per importare il database: `mysql -u username -p database_name < noleggio_auto[EXPORT].sql`
@@ -19,7 +19,7 @@
 
   ### Database
   La classe Database permette in modo semplice di aprire una connessione al database e fornisce una serie di metodi pubblici per eseguire le operazioni di SELECT, INSERT INTO, UPDATE e DELETE sul database SQL (MySQL/MariaDB)
-  è stato preferito un approccio di questo tipo per poter gestire meglio gli errori
+  È stato preferito un approccio di questo tipo per poter gestire meglio gli errori
   
   ### User
   La classe User permette, ad ogni avvio di pagina (alla pari del `session_start()`) di instanziare un oggetto User che, se l'utente è loggato nella sessione corrente, recupera dalla sessione, altrimenti questo oggetto avrà l'attributo `loggedIn` a false e permetterà in fase di runtime di gestire correttamente il login dell'utente.
