@@ -12,7 +12,7 @@ return [
             <h3>Cookies</h3>
             <p>
                 This website uses cookies and you accept the use of them by using it.
-                For more informations visit our <a href="/privacy.html" title="Go to the Privacy Policy page">Cookies Policy</a>
+                For more informations visit our <a href="/privacy.php" title="Go to the Privacy Policy page">Cookies Policy</a>
             </p>
         </div>',
     'head' => '<link rel="stylesheet" href="/public/css/components/_cookie_banner.css">'
