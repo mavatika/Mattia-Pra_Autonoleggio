@@ -1,0 +1,213 @@
+// _home.sass
+
+$form-grid-rows: auto auto auto auto auto
+$form-grid-cols: 1fr 1fr
+$form-row-gap: 6px
+$form-col-gap: 6px
+
+.homepage
+  main
+    width: 100%
+    height: 100vh
+    background:
+      color: black
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    +ie-compatible()
+      position: static
+    .main_banner
+      +center()
+      width: 90%
+      max-width: 600px
+      h2
+        color: white
+        text-shadow: 0 0 10px black
+        font:
+          size: 2.5rem
+        text-align: center
+      form
+        text-align: center
+        background: transparent
+        padding: 0
+        box-shadow: none
+        overflow: visible
+        .where2rent_wrapper
+          label
+            +center(absolute, v)
+            left: 25px
+            cursor: text
+          input
+            width: 100%
+            padding: 15px 20px
+            background: white
+            +box-shadow(15, $color-black-50)
+            border-radius: 15px
+            font-size: 1.2rem
+            +ie-compatible()
+              &:-ms-input-placeholder
+                color: transparent !important
+            &::placeholder
+              color: transparent
+              transition: color .15s
+            &:valid, &:focus
+              & + label
+                left: 5px
+                top: -25%
+              &::placeholder
+                color: $color-black-75
+              &:-ms-input-placeholder
+                color: initial !important
+          button[type=submit]
+            background: transparent
+            +center(absolute, v)
+            right: 10px
+        a
+          color: white
+          text-decoration: none
+          text-align: center
+          margin-top: 5px
+          display: block
+          padding: 7.5px
+    .discover_branch
+      +center(absolute, h)
+      bottom: 45px
+      color: black
+      text-decoration: none
+      font:
+        size: .9rem
+      text-align: center
+      &:focus, &:hover
+        outline: none
+      .icon_wrapper
+        margin: 5px auto 0
+  section
+    z-index: 5
+    margin:
+      top: 100vh
+    +ie-compatible()
+      margin-top: 0
+    background: white
+    padding: 40px 40px
+    display: flex
+    flex:
+      direction: row
+    +responsive()
+      flex-direction: column-reverse
+      padding: 70px 15px 15px
+    .branch_img
+      width: 100%
+      padding: 20px 35px
+      +responsive()
+        margin: 25px auto 0
+      img
+        border-radius: 15px
+        +box-shadow(15, $color-black-25)
+    .branch_section
+      h2
+        position: relative
+        text-align: center
+        font:
+          size: 1.75rem
+        &::after
+          content: ''
+          width: 15%
+          height: 2px
+          background: $color-dark-yellow
+          +center(absolute, h)
+          bottom: -5px
+      p
+        text-align: center
+        margin: 5px auto 10px
+      .opening_hours
+        background: white
+        +box-shadow(15, $color-black-25)
+        border-radius: 15px
+        padding: 15px 0
+        display: flex
+        justify-content: space-around
+        +responsive()
+          flex-direction: column
+          .open
+            padding: 10px 0
+        .open
+          text-align: center
+          & > *
+            display: block
+          .time
+            font:
+              size: 1.5rem
+              weight: 500
+          sup
+            font:
+              size: .75rem
+              weight: 300
+      .contact_details
+        display: grid
+        grid:
+          template-columns: 1fr 1fr
+          gap: 10px
+        text-align: right
+        justify-items: center
+        margin: 10px 0
+        padding: 0 15px
+        +ie-compatible()
+          display: -ms-grid
+          -ms-grid-columns: 1fr 1fr
+          -ms-grid-rows: 1fr
+          & > *
+            &:first-child
+              -ms-grid-row: 1
+              -ms-grid-row-span: 1
+              -ms-grid-column: 1
+              -ms-grid-column-span: 1
+            &:last-child
+              -ms-grid-row: 1
+              -ms-grid-row-span: 1
+              -ms-grid-column: 2
+              -ms-grid-column-span: 2
+        +responsive()
+          grid:
+            template-columns: 1fr
+          justify-items: left
+          text-align: left
+          margin:
+            top: 25px
+            left: auto
+            right: auto
+        .normal_link
+          text-decoration: none
+      .branch_description
+        margin: 25px auto 0
+      a.primary_btn
+        width: fit-content
+        margin:
+          top: 40px
+          bottom: 15px
+        +ie-compatible()
+          display: inline-block
+          width: auto
+        +responsive()
+          margin:
+            left: auto
+            right: auto
+.video_wrapper
+  width: 100%
+  height: 100%
+  overflow: hidden
+  z-index: 0
+  &::before
+    content: ''
+    width: 100%
+    height: 100%
+    background: $color-white-25
+    z-index: 1
+    position: absolute
+    left: 0
+    top: 0
+  video
+    min-width: 100%
+    min-height: 100%
+    +center()

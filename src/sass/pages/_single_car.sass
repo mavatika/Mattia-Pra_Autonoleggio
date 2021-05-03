@@ -1,0 +1,154 @@
+// _.single_car.sass
+
+.car_item
+  main
+    display: grid
+    grid:
+      template:
+        columns: 30% 1fr
+        rows: auto 1fr
+        areas: "car_details car_name" "car_details car_img"
+      gap: 0 40px
+    padding: 20px 60px
+    +responsive()
+      display: flex
+      flex-direction: column
+      padding: 20px
+      & > *
+        margin: 20px auto
+        width: 100%
+      .car_img
+        right: 0 !important
+        padding: 0 !important
+      .car_btn
+        position: static !important
+    .car_details
+      grid-area: car_details
+      +box-shadow(15, $color-black-25)
+      background: white
+      padding: 25px 15px
+      border-radius: 20px
+      height: fit-content
+      table
+        width: 100%
+        padding: 10px 0 5px
+        caption
+          font:
+            weight: 600
+            size: 1.4rem
+          text-align: left
+        th
+          color: $color-black-75
+          font:
+            size: .9rem
+            weight: 400
+            style: italic
+          text-align: left
+        td
+          font:
+            weight: 600
+          text-align: right
+    .car_name
+      grid-area: car_name
+      text-align: left
+      a
+        display: block
+      +ie-compatible()
+        padding:
+          left: 40px
+    .car_img
+      grid-area: car_img
+      padding: 60px 30px 30px
+      right: 20%
+      max-height: 65vh
+      img
+        object-fit: contain
+    .car_btn
+      position: absolute
+      bottom: 40px
+      right: 120px
+    +ie-compatible()
+      display: -ms-grid
+      -ms-grid-columns: 30% 1fr 25%
+      -ms-grid-rows: auto 1fr 80px
+      gap: 0 20px
+      .car_details
+        -ms-grid-row: 1
+        -ms-grid-row-span: 3
+        -ms-grid-column: 1
+        -ms-grid-column-span: 1
+      .car_name
+        -ms-grid-row: 1
+        -ms-grid-row-span: 1
+        -ms-grid-column: 2
+        -ms-grid-column-span: 3
+      .car_img
+        -ms-grid-row: 2
+        -ms-grid-row-span: 1
+        -ms-grid-column: 2
+        -ms-grid-column-span: 2
+      .car_btn
+        -ms-grid-row: 3
+        -ms-grid-row-span: 1
+        -ms-grid-column: 3
+        -ms-grid-column-span: 1
+  hr
+    width: calc(100% - 120px)
+    margin: 25px auto 0
+  #car_details
+    padding: 25px 0 0
+    .car_images
+      display: grid
+      grid:
+        template-columns: 1fr 1fr 1fr
+      gap: 60px
+      padding: 25px 60px 60px
+      figure
+        img
+          object-fit: cover
+      +ie-compatible()
+        display: -ms-grid
+        -ms-grid-columns: 1fr 1fr 1fr
+        -ms-grid-rows: 1fr
+        +responsive(tablet)
+          -ms-grid-columns: 1fr 1fr
+        +responsive()
+          -ms-grid-columns: 1fr
+        figure
+          padding: 0 30px
+          &:first-of-type
+            -ms-grid-column: 1
+          &:nth-of-type(2)
+            -ms-grid-column: 2
+          &:nth-of-type(3)
+            -ms-grid-column: 3
+    .car_paragraph
+      padding: 25px 60px
+      width: 100%
+      column:
+        count: 3
+        gap: 60px
+      text-align: justify
+      h2
+        margin:
+          top: 0
+      p
+        margin: 15px 0
+    +responsive(tablet)
+      .car_paragraph
+        padding: 25px 40px
+        column-count: 2
+      .car_images
+        padding: 25px 40px 40px
+        grid-template-columns: 1fr 1fr
+        figure:last-of-type
+          display: none
+    +responsive()
+      .car_paragraph
+        padding: 25px 20px
+        column-count: 1
+      .car_images
+        padding: 25px 20px 20px
+        grid-template-columns: 1fr
+        figure:last-of-type
+          display: none

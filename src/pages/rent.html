@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    { common_head }
+    <link rel="stylesheet" href="/css/pages/rent.css">
+    <script defer src="/js/pages/rent.js"></script>
+    <title>Rent a car | Mattia Prà - Autonoleggio</title>
+</head>
+<body class="rent not_home">
+    { cookie_banner }
+    { header }
+<main>
+    <div class="heading_wrapper" role="heading">
+        <figure role="presentation" class="page_bg">
+            <h2 id="car_name">{ brand } { model }</h2>
+        </figure>
+        <h1>Rent this car</h1>
+    </div>
+    <div class="rent_section" role="grid">
+        <aside>
+            <form action="/cars/rent.php" method="post" id="rent_form">
+                { errors }
+                <alternative>
+                    <static>
+                        <fieldset>
+                            <div class="input_wrapper">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" maxlength="50" minlength="3" autocomplete="given-name" value="{ name }" placeholder="Mario" required>
+                            </div>
+                            <div class="input_wrapper">
+                                <label for="surname">Surname:</label>
+                                <input type="text" id="surname" name="surname" maxlength="50" minlength="3" autocomplete="family-name" value="{ surname }" placeholder="Rossi" required>
+                            </div>
+                            <div class="input_wrapper">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" maxlength="50" minlength="3" autocomplete="email" value="{ email }" placeholder="mario.rossi@dominio.it" required>
+                            </div>
+                            <div class="input_wrapper horizontal">
+                                <label for="bday">Date of birth (You need to be 18 to rent a car):</label>
+                                <input type="date" id="bday" name="bday" autocomplete="bday" value="{ bday }" max="2002-01-01" required>
+                            </div>
+                        </fieldset>
+                    </static>
+                    <dynamic></dynamic>
+                </alternative>
+                <fieldset>
+                    <div class="input_wrapper">
+                        <label for="which">Which car do you desire?</label>
+                        { hiddenCar }
+                        <select id="which" name="car" { carDisabled }>
+{ cars }
+                        </select>
+                    </div>
+                    <div class="input_wrapper">
+                        <label for="from">Where is the pickup point?</label>
+                        <select name="city" id="from" required>
+                            { cities }
+                        </select>
+                    </div>
+                    <div class="input_wrapper">
+                        <label for="when">When do you wish to pick up the car?</label>
+                        <input type="date" id="when" name="startDate" value="{ startDate }" min="2021-01-01" required>
+                    </div>
+                    <div class="input_wrapper horizontal">
+                        <label for="howlong">How long do you wish to keep the car?</label>
+                        <input type="number" min="1" max="14" name="duration" id="howlong" value="{ duration }" placeholder="1" value="1" required>
+                    </div>
+                </fieldset>
+                <div class="input_wrapper horizontal no_bold">
+                    <label for="readterm">To continue you need to read and accept our <a href="/pdf/terms.pdf" target="_blank">terms and conditions</a></label>
+                    <input type="checkbox" id="readterm" value="readterm" name="readterm" required>
+                </div>
+                <div class="button_wrapper">
+                    <button class="tertiary_btn" type="reset">Reset</button>
+                    <button class="primary_btn" type="submit">Rent</button>
+                </div>
+            </form>
+        </aside>
+        <figure role="presentation">
+            <picture>
+                <source srcset="/img/pages/rent/right.webp">
+                <img src="/img/pages/rent/right.jpeg" alt="">
+            </picture>
+        </figure>
+        <figure id="car_image" style="background-image: url({ image });">
+            <figcaption>{ brand } { model }</figcaption>
+        </figure>
+    </div>
+</main>
+{ footer }
+</body>
+</html>

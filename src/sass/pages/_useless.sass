@@ -1,0 +1,140 @@
+.form_wrapper
+  @extend %container
+  +center(absolute, v)
+  right: 25%
+  width: 90%
+  max-width: 320px
+  background: black
+  color: white
+  +box-shadow(15, $color-white-25)
+  overflow: hidden
+  padding:
+    bottom: 15px
+
+  form
+    display: grid
+    grid-template-columns: $form-grid-cols
+    grid-template-rows: $form-grid-rows
+    gap: $form-row-gap $form-col-gap
+    grid-template-areas: "Email Email" "Persone Persone" "Data Ora" "Invia Invia" "Cancella Cancella"
+    +responsive()
+      position: relative
+      right: 0
+      top: 0
+
+    .Email
+      grid-area: Email
+    .Persone
+      grid-area: Persone
+    .Data
+      grid-area: Data
+    .Ora
+      grid-area: Ora
+    button[type=submit]
+      grid-area: Invia
+      font-size: .9rem
+      font-weight: 600
+      margin:
+        top: 5px
+      &:active
+        color: $color-black-50
+    button[type=reset]
+      background: transparent
+      color: white
+      grid-area: Cancella
+      &:active
+        color: $color-white-50
+    button
+      border-radius: 10px
+      padding: 12px 0
+      letter-spacing: 1px
+      &:hover, &:focus
+        box-shadow: 0 0 0 2px $color-dark-yellow
+      &:active
+        box-shadow: 0 0 0 4px $color-dark-yellow
+  +ie-compatible()
+    form
+      display: -ms-grid
+      -ms-grid-columns: $form-grid-cols
+      -ms-grid-rows: $form-grid-rows
+      .horizontal
+        margin:
+          bottom: $form-row-gap
+      .vertical
+        margin:
+          bottom: $form-row-gap
+        input
+          text-align: center
+          flex: none !important
+      .Email
+        -ms-grid-row: 1
+        -ms-grid-row-span: 1
+        -ms-grid-column: 1
+        -ms-grid-column-span: 2
+      .Persone
+        -ms-grid-row: 2
+        -ms-grid-row-span: 1
+        -ms-grid-column: 1
+        -ms-grid-column-span: 2
+      .Data
+        -ms-grid-row: 3
+        -ms-grid-row-span: 1
+        -ms-grid-column: 1
+        -ms-grid-column-span: 1
+        flex: initial
+        margin:
+          right: $form-col-gap / 2
+      .Ora
+        -ms-grid-row: 3
+        -ms-grid-row-span: 1
+        -ms-grid-column: 2
+        -ms-grid-column-span: 1
+        margin:
+          left: $form-col-gap / 2
+      button[type=reset]
+        -ms-grid-row: 5
+        -ms-grid-row-span: 1
+        -ms-grid-column: 1
+        -ms-grid-column-span: 1
+      button[type=submit]
+        -ms-grid-row: 4
+        -ms-grid-row-span: 1
+        -ms-grid-column: 1
+        -ms-grid-column-span: 1
+
+
+form
+  .input_wrapper
+    background: gray
+    border-radius: 10px
+    display: flex
+    cursor: pointer
+    overflow: hidden
+    &:focus-within
+      box-shadow: 0 0 0 2px $color-dark-yellow
+    &.horizontal
+      flex-direction: row
+    &.vertical
+      flex-direction: column
+    input
+      flex: 1
+      background: transparent
+      padding: 12px 16px
+      color: white
+      font:
+        size: .85rem
+        weight: 500
+      &::placeholder
+        color: $color-white-50
+      &[type=date], &[type=time]
+        text-align: center
+        padding:
+          bottom: 12px
+    label
+      padding: 8px 16px
+      text-align: center
+      align-self: center
+      color: $color-white-75
+      font:
+        size: .8rem
+        style: italic

@@ -1,0 +1,48 @@
+// _contact.sass
+
+.contact
+  .page_bg
+    background-image: url("../img/pages/contact/bg.jpg")
+  .contact_us, .study_person
+    padding: 0 5%
+  .contact_us
+    form
+      float: left
+      width: 55%
+    aside
+      float: right
+      background: white
+      +box-shadow(15, $color-black-25)
+      border-radius: 15px
+      position: sticky
+      top: 400px
+      padding: 25px 15px
+      ul
+        margin: 0
+        padding-left: 15px
+      h2
+        font:
+          size: 1.1rem
+        margin:
+          top: 0
+    +responsive()
+      form, aside
+        float: none
+      form
+        width: 100%
+      aside
+        width: fit-content
+        margin: 25px auto
+        position: static
+  hr
+    clear: both
+    position: relative
+    top: 40px
+  .study_person
+    max-width: 600px
+    width: 100%
+    margin: 60px auto 0
+    summary
+      text-align: center
+      margin:
+        bottom: 25px

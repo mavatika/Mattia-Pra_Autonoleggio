@@ -1,0 +1,70 @@
+// _init.sass
+
+html, body
+  padding: 0
+  margin: 0
+  background: white
+  -ms-scroll-chaining: none
+  scroll-behavior: smooth
+  overflow:
+    x: hidden
+  font:
+    family: 'Roboto', sans-serif
+    size: 100%
+  -ms-overflow-style: none
+
+*
+  transition: all .2s
+  box-sizing: border-box
+
+div, section, p, main, aside, header, footer, article, figure, abbr, form
+  padding: 0
+  margin: 0
+  position: relative
+  color: inherit
+  font-family: inherit
+  font-weight: inherit
+  text:
+    decoration: none
+    overflow: ellipsis
+  display: block
+
+img
+  width: 100%
+  height: 100%
+
+input, select, textarea
+  border: none
+  &:-webkit-autofill
+    background: inherit
+    color: inherit
+    -webkit-text-fill-color: inherit
+  &:focus
+    outline: none
+  &:disabled
+    box-shadow: none !important
+    opacity: .75
+
+button
+  padding: 6px 12px
+  border: none
+  outline: none
+  cursor: pointer
+  &:hover, &:focus
+  & > a
+    text-decoration: none
+
+li > a
+  text-decoration: none
+  &:focus
+    outline: none
+
+.link
+  text-decoration: underline
+.bold
+  font-weight: 600
+
+figcaption
+  text-align: center
+  font:
+    style: italic

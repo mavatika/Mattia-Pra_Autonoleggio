@@ -1,0 +1,395 @@
+// _commons.sass
+
+.cookies
+  @extend %container
+  z-index: 999
+  background: white
+  +box-shadow(15, $color-black-75)
+  display: none
+  width: 90%
+  max-width: 300px
+  position: fixed
+  right: 5%
+  bottom: 5%
+  +responsive()
+    bottom: 40px
+    left: 50%
+    right: initial
+    transform: translateX(-50%)
+  transform: translateY(150%)
+  animation: cookies .5s
+    delay: 1s
+    fill-mode: forwards
+    timing-function: ease-in-out
+  &_img
+    width: 15%
+    margin: 0 auto
+  h3
+    text-align: center
+  p
+    font-size: .75rem
+    text-align: center
+  .close
+    position: absolute
+    right: -10px
+    top: -10px
+    width: 40px
+    height: 40px
+    padding: 7.5px
+    border-radius: 15px
+    background: white
+    +box-shadow(15, $color-black-50)
+    &:hover, &:focus
+      transform: translateY(-3px)
+      box-shadow: 0 7.5px 15px 0 rgba(0, 0, 0, 0.75)
+  &.hiding
+    opacity: 0
+
+@keyframes cookies
+  from
+    transform: translateY(150%)
+  to
+    transform: translateY(0)
++responsive()
+  @keyframes cookies
+    from
+      transform: translate(-50%, 150%)
+    to
+      transform: translate(-50%, 0)
+
+
+header
+  z-index: 10
+  position: fixed
+  left: 0
+  top: 0
+  right: 0
+  width: 100%
+  max-width: 100vw
+  background: linear-gradient(to bottom, white, transparent)
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 10px 25px
+  color: black
+  .logo
+    width: 5%
+    min-width: 120px
+    max-width: 300px
+  .hamburger
+    display: none
+  nav
+    ul
+      width: 100%
+      display: flex
+      flex:
+        direction: row
+      list-style: none
+      padding: 0
+      margin: 0
+      li
+        position: relative
+        a
+          padding: 10px 25px
+          font-weight: 500
+          color: inherit
+          display: block
+        .header_link
+          &.active_link
+            &::before
+              opacity: 1
+          &::before
+            content: ''
+            width: 5px
+            height: 5px
+            border-radius: 50%
+            background: $color-dark-yellow
+            +center(absolute, h)
+            bottom: 20%
+            opacity: 0
+            z-index: -1
+            transition: all .2s
+          &:hover, &:focus
+            &::before
+              opacity: 1
+              transform: translateX(-50%) scale(10)
+          &:active
+            &::before
+              transform: translateX(-50%) scale(15)
+        &:last-child
+          +responsive()
+            margin: 15px 40px 0
+          a
+            border: 3px solid $color-dark-yellow
+              radius: 15px
+            &:hover, &:focus
+              background: transparentize($color-dark-yellow, .25)
+  +responsive()
+    .hamburger
+      display: block
+      position: absolute
+      right: 25px
+      top: 25px
+      width: 34px
+      height: 24px
+      z-index: 15
+      color: black
+      cursor: pointer
+      &:hover, &:focus
+        transform: scale(.8)
+      &::before, &::after
+        content: ''
+        width: 100%
+        transition: all .2s
+        height: 2px
+        position: absolute
+        background: currentColor
+        transform-origin: center
+      &::before
+        top: 0
+        left: 50%
+        transform: translate(-50%, 0)
+      &::after
+        bottom: 0
+        left: 50%
+        transform: translate(-50%, 0)
+      .hamburger_inner
+        +center()
+        width: 100%
+        height: 2px
+        background: currentColor
+      & + nav
+        opacity: 0
+        visibility: hidden
+      &.hamburger_active
+        color: white
+        .hamburger_inner
+          opacity: 0
+        &::before, &::after
+          top: 50%
+          left: 50%
+        &::before
+          transform: translate(-50%, -50%) rotate(45deg)
+        &::after
+          transform: translate(-50%, -50%) rotate(-45deg)
+        & + nav
+          opacity: 1
+          visibility: visible
+    nav
+      position: fixed
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      width: 100%
+      height: 100vh
+      background: transparentize(black, 0.1)
+      color: white
+      ul
+        +center()
+        flex-direction: column
+        li
+          a
+            text-align: center
+            padding: 20px 0
+            font:
+              size: 1.25rem
+              weight: 500
+
+footer
+  width: 100%
+  padding: 40px 25px
+  background: lightgray
+  z-index: 5
+  text-align: center
+  font:
+    size: .75rem
+  color: black
+  p
+    padding: 5px
+
+.icon_wrapper
+  width: 24px
+  height: 24px
+  display: inline-block
+  vertical-align: middle
+  padding: 0
+  &:focus, &:hover
+    img
+      transform: scale(1.25)
+
+
+.primary_btn, .secondary_btn
+  padding: 10px 20px
+  border-radius: 15px
+  display: block
+  text-align: center
+  font:
+    size: 1rem
+    weight: 500
+  color: inherit
+  text-decoration: none
+  border: 2px solid $color-dark-yellow
+
+.primary_btn
+  background: $color-dark-yellow
+  +box-shadow(15, $color-dark-yellow, true)
+  &:hover, &:focus
+    background: transparent
+.secondary_btn
+  background: transparent
+  &:hover, &:focus
+    background: $color-dark-yellow
+.tertiary_btn
+  background: transparent
+  font:
+    size: .85rem
+  color: $color-black-75
+  &:hover, &:focus
+    transform: scale(1.2)
+
+.yellow_title
+  color: $color-dark-yellow
+  text-shadow: 0 0 2px $color-black-25
+
+.normal_link
+  color: black
+  &:hover, &:focus
+    color: $color-dark-yellow
+
+.not_home
+  main
+    margin:
+      top: 100px
+    padding: 20px
+    h1
+      text-align: center
+
+.heading_wrapper
+  text-align: center
+  margin: 0 auto 40px
+
+.page_bg
+  width: 90%
+  height: 50vh
+  margin: 0 auto
+  background:
+    size: cover
+    position: center
+
+form
+  padding: 10px 15px
+  background: white
+  +box-shadow(15, $color-black-25)
+  border-radius: 15px
+  overflow: hidden
+  &::before, &::after
+    content: ''
+    opacity: 0
+    visibility: hidden
+    transition: all .2s
+  &::before
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    width: 100%
+    height: 100%
+    background: $color-white-75
+    z-index: 10
+  &::after
+    width: 24px
+    height: 24px
+    border-radius: 50%
+    background: black
+    z-index: 11
+    +center()
+  &.isLoading
+    &::before, &::after
+      opacity: 1
+      visibility: visible
+    &::after
+      animation: ripple 1s ease-in-out infinite alternate
+  fieldset
+    border: none
+  .radio_container
+    display: flex !important
+    flex:
+      direction: row
+      wrap: wrap
+    justify-content: space-around
+    padding: 0
+    legend, label
+      width: 100%
+  .radio_wrapper
+    cursor: pointer
+    label
+      background: transparentize(gray, 0.9)
+      padding: 10px 20px !important
+      border: 1px solid gray
+        radius: 15px
+      font:
+        weight: 400 !important
+        size: .9rem !important
+    input[type=radio]
+      position: absolute
+      width: 100%
+      height: 100%
+      display: block
+      left: 0
+      top: 0
+      z-index: -10
+      opacity: 0
+      &:focus + label
+        box-shadow: 0 0 10px 2px transparentize(forestgreen, 0.5)
+      &:checked + label
+        box-shadow: 0 0 0 2px forestgreen
+  .input_wrapper
+    margin: 15px 0
+    &.horizontal
+      display: flex
+      flex-direction: row
+      align-items: center
+      margin-top: 20px
+      label
+        padding: 0 8px
+        flex: 1
+        flex-grow: 1
+      input, select, textarea
+        width: auto
+      +responsive()
+        display: block
+        label
+          padding: 8px 0
+        input, select, textarea
+          width: 100%
+        &.no_bold > *
+          display: inline
+          width: auto
+    label, legend
+      display: inline-block
+      padding: 8px 0
+      font:
+        weight: 500
+    &.no_bold
+      label
+        font:
+          weight: 400
+          size: .85rem
+    input, select, textarea
+      font-family: inherit
+      display: block
+      background: transparentize(gray, 0.9)
+      padding: 12px 24px
+      border: 1px solid gray
+        radius: 15px
+      +box-shadow(15, gray, true)
+      width: 100%
+      &:focus
+        box-shadow: 0 0 0 2px $color-dark-yellow
+  .button_wrapper
+    text-align: center
+    button
+      display: inline-block
+      margin: 0 12px
