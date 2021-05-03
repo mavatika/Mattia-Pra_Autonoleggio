@@ -1,7 +1,7 @@
 # MattiaPrà - Autonoleggio
 
 ## Installazione
-  È necessario scrivere i dettagli del database (host, porta, username e password, nome del databse) nel file .env (sintassi CHIAVE=VALORE) situato nella root
+  È necessario scrivere i dettagli del database (host, porta, username e password, nome del database) nel file .env (sintassi CHIAVE=VALORE) situato nella root
   Il database è composto da 6 tabelle abbastanza semplici --> importare dal backup 'noleggio_auto[EXPORT].sql'
 
   Per importare il database: `mysql -u username -p database_name < noleggio_auto[EXPORT].sql`
