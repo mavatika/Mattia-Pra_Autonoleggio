@@ -1,0 +1,59 @@
+.cookies {
+  z-index: 999;
+  background: white;
+  box-shadow: 0 7.5px 15px -3.75px rgba(0, 0, 0, 0.75);
+  display: none;
+  width: 90%;
+  max-width: 300px;
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  transform: translateY(150%);
+  animation: cookies 0.5s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  padding: 25px 15px;
+  border-radius: 20px;    
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+.cookies {
+  bottom: 40px;
+  left: 50%;
+  right: initial;
+  transform: translateX(-50%);
+}
+}
+.cookies_img {
+  width: 15%;
+  margin: 0 auto;
+}
+.cookies h3 {
+  text-align: center;
+}
+.cookies p {
+  font-size: 0.75rem;
+  text-align: center;
+}
+.cookies.hiding {
+  opacity: 0;
+}
+
+@keyframes cookies {
+  from {
+      transform: translateY(150%);
+  }
+  to {
+      transform: translateY(0);
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  @keyframes cookies {
+      from {
+          transform: translate(-50%, 150%);
+      }
+      to {
+          transform: translate(-50%, 0);
+      }
+  }
+}
