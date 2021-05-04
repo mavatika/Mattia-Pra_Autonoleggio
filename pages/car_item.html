@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    { common_head }
+    <link rel="stylesheet" href="/css/pages/car_item.css">
+    <title>{ brand } { model } | Mattia Prà - Autonoleggio</title>
+</head>
+<body class="car_item not_home">
+    { cookie_banner }
+    { header }
+<main>
+    <div class="car_name" role="heading">
+        <h1>{ brand } { model }</h1>
+        <p>
+            { short_description }
+            <a class="link bold" href="#car_details">Read more »</a>
+        </p>
+    </div>
+    <div class="car_details">
+        <table>
+            <caption aria-roledescription="Table heading">Details</caption>
+            <tbody>
+                <tr>
+                    <th id="category" scope="row">Category</th>
+                    <td headers="category">{ category }</td>
+                </tr>
+                <tr>
+                    <th id="age" scope="row">Age</th>
+                    <td headers="age">{ age }</td>
+                </tr>
+                <tr>
+                    <th id="engine" scope="row">Engine Power</th>
+                    <td headers="engine">{ engine } CV</td>
+                </tr>
+                <tr>
+                    <th id="speed" scope="row">Maximum Speed</th>
+                    <td headers="speed">{ speed } km/h</td>
+                </tr>
+                <tr>
+                    <th id="gps" scope="row">GPS Tracked</th>
+                    <td headers="gps">{ gps }</td>
+                </tr>
+                <tr>
+                    <th id="transmission" scope="row">Transmission</th>
+                    <td headers="transmission">{ transmission }</td>
+                </tr>
+                <tr>
+                    <th id="seats" scope="row">Seats</th>
+                    <td headers="seats">{ seats }</td>
+                </tr>
+                <tr>
+                    <th id="tank" scope="row">Tank capacity</th>
+                    <td headers="tank">{ tank } lt</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <figure class="car_img">
+        <img src="{ image }" alt="{ brand } { model }">
+    </figure>
+    { car_link }
+</main>
+<hr />
+<div id="car_details">
+    <article class="car_paragraph">
+        <h2>The { brand } { model }</h2>
+        <p>{ description }</p>
+    </article>
+    <div class="car_images" role="presentation">
+        <figure>
+            <img src="{ img1 }" alt="The interiors">
+        </figure>
+        <figure>
+            <img src="{ img2 }" alt="Driving the car">
+        </figure>
+        <figure>
+            <img src="{ img3 }" alt="Car's back">
+        </figure>
+    </div>
+</div>
+{ footer }
+</body>
+</html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 01, 2021 alle 12:29
+-- Creato il: Mag 04, 2021 alle 10:08
 -- Versione del server: 10.4.17-MariaDB
 -- Versione PHP: 7.3.27
 
@@ -103,13 +103,6 @@ CREATE TABLE `messages` (
   `answered` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dump dei dati per la tabella `messages`
---
-
-INSERT INTO `messages` (`id`, `user_id`, `object`, `message`, `answered`) VALUES
-(0000000003, 'mattia', NULL, 'Anna è troppo bella, come devo fare?', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -124,16 +117,6 @@ CREATE TABLE `rents` (
   `startDate` date NOT NULL DEFAULT current_timestamp(),
   `duration` tinyint(4) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dump dei dati per la tabella `rents`
---
-
-INSERT INTO `rents` (`id`, `car_id`, `user_id`, `city`, `startDate`, `duration`) VALUES
-(45, 00000000001, 'mattia', 'MI', '2021-05-09', 6),
-(48, 00000000004, 'mario.rossi@dominio.it', 'CS', '2021-05-02', 5),
-(49, 00000000002, 'mattia', 'VE', '2021-05-01', 1),
-(50, 00000000005, 'mattia', 'CS', '2021-05-01', 1);
 
 -- --------------------------------------------------------
 
@@ -182,10 +165,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `email`, `scope`, `name`, `surname`, `age`, `city`, `fav_car`) VALUES
-('anna', '$2y$10$w0QHcT39wdArSpyOuq9M7eYQNULi9pKbu5abkWtqwcXv4BkFly4Du', 'annaastasii@icloud.com', 'user', 'Anna', 'Stasi', 19, 'CO', 'Range Rover'),
-('mario.rossi@dominio.it', '', '', 'temp', 'Mario', 'Rossi', 21, NULL, NULL),
-('mattia', '$2y$10$X3MxtTkDcIHMWQsUTQ5u8ulsG8tKoQkGwbgjLrYzSRgRvm6.D84Jy', 'mavatika.pr@gmail.com', 'admin', 'Mattia', 'Prà', 19, 'LA', 'Range Rover'),
-('mattiapra', '$2y$10$/gxpmf.XzGI8I/zbr.Xln.W2femeK32271KSvQkzA91hEIB3j0IsC', 'pramattia@gmail.com', 'user', 'Mattia', 'Prà', 19, 'TR', 'Lamborghini');
+('admin', '$2y$10$Y790ALV8VCgJa6uetHqzlOtWztrVPh9PhcfsJsM9Lcqggyivewa8q', 'admin@admin.it', 'admin', 'Admin', 'DotDot', 50, 'LV', 'Tesla');
 
 --
 -- Indici per le tabelle scaricate
@@ -245,13 +225,13 @@ ALTER TABLE `cars`
 -- AUTO_INCREMENT per la tabella `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT per la tabella `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- Limiti per le tabelle scaricate
