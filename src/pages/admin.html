@@ -81,7 +81,7 @@
                 <input type="text" id="fav_car" name="fav_car" value="{ fav_car }">
               </div>
             </fieldset>
-            <button class="primary_btn" type="submit">Update</button>
+            <button class="primary_btn" type="submit" name="updateuser">Update</button>
           </form>
         </section>
         <section id="cars_available">
@@ -115,9 +115,6 @@
               <thead>
                 <tr>
                   <th>Username</th>
-                  <th>Name</th>
-                  <th>Surname</th>
-                  <th>Age</th>
                   <th>Brand</th>
                   <th>Model</th>
                   <th>City</th>
@@ -144,6 +141,7 @@
               <thead>
                 <tr>
                   <th>Username</th>
+                  <th>E-mail</th>
                   <th>Surname</th>
                   <th>Name</th>
                   <th>Age</th>
@@ -186,7 +184,7 @@
         <img src="/img/icons/x.svg" alt="" role="presentation">
       </button>
       <template id="form_template">
-        <form action="/user/index.php?s=" method="POST" class="create_record" enctype="multipart/form-data">
+        <form action="/user/index.php" method="POST" class="create_record" enctype="multipart/form-data">
           <div id="table_placeholder"></div>
           <template id="adduser">
             <div class="input_wrapper">
@@ -196,6 +194,10 @@
             <div class="input_wrapper">
               <label for="password">Password</label>
               <input type="password" id="password" class="password" name="password" maxlength="50" minlength="3" placeholder="Password" autocomplete="new-password" required>
+            </div>
+            <div class="input_wrapper">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" maxlength="100" minlength="3" autocomplete="email" placeholder="E-mail" required>
             </div>
             <div class="input_wrapper">
               <label for="scope">Scope</label>
@@ -279,7 +281,7 @@
               </div>
               <div class="input_wrapper horizontal">
                 <label for="gps">GPS enabled</label>
-                <input type="checkbox" id="gps" name="gps" value="1" checked required>
+                <input type="checkbox" id="gps" name="gps" value="1" checked>
               </div>
               <div class="input_wrapper">
                 <label for="tank">Tank capacity</label>
@@ -317,10 +319,10 @@
                 <input type="text" id="img3" name="img3" maxlength="255" minlength="0" placeholder="Link to image 3">
               </div>
             </fieldset>
-        </template>
+          </template>
           <div class="button_wrapper">
             <button class="tertiary_btn" type="reset">Reset</button>
-            <button class="primary_btn" type="submit">Create</button>
+            <button class="primary_btn" type="submit" name="create_sth">Create</button>
           </div>
         </form>
       </template>

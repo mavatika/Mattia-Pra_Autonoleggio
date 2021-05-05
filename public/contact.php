@@ -12,6 +12,7 @@ if (count($_POST) > 0) {
     $userData = $user->loggedIn ? $user->getUser() : User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email']);
     $db->put([
       'user_id' => $userData['username'],
+      'object' => $_REQUEST['obj'],
       'message' => $_REQUEST['msg']
     ], 'messages');
     $db->close();
@@ -23,9 +24,11 @@ if (count($_POST) > 0) {
 
 $page = new Template('contact', !$user->loggedIn);
 
-if ($user->loggedIn) $page->putDynamicContent(array_merge($user->getUser(), [
-    'send_error' => isset($msg) ? $msg : ''
-  ]));
+if ($user->loggedIn) $page->putDynamicContent($user->getUser());
+
+$page->putDynamicContent([
+  'send_error' => isset($msg) ? $msg : ''
+]);
 
 $page->render();
 

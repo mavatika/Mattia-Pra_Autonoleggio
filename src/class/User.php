@@ -38,6 +38,7 @@ class User {
   public function update($city = null, $fav_car = null) {
     $db = new Database();
     $u = [];
+    $city = Utils::generateCityCode($city);
     if (!empty($city)) $u['city'] = "'$city'";
     if (!empty($fav_car)) $u['fav_car'] = "'$fav_car'";
     $username = $this->user['username'];
@@ -73,16 +74,7 @@ class User {
 
     $hash = password_hash($password, PASSWORD_BCRYPT);
 
-    if (!empty($city) && strlen($city) > 2) {
-      $tmp_city = preg_split("/\s+/", $city);
-      if (is_array($tmp_city) && count($tmp_city) > 1) {
-        $city = '';
-        foreach ($tmp_city as $char) {
-          $city .= $char;
-        }
-      } else $city = substr($city, 0, 2);
-      $city = strtoupper($city);
-    }
+    $city = Utils::generateCityCode($city);
     
     $db = new Database();
 
@@ -98,6 +90,7 @@ class User {
         'city' => $city,
         'fav_car' => !empty($fav_car) ? ucwords($fav_car) : $fav_car
       ];
+
       $db->put($els, 'users');
       $db->close();
       return true;

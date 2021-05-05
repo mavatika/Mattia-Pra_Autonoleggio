@@ -10,11 +10,11 @@ function getRents ($user = null) {
         'cars, cities, rents',
         'WHERE cars.id = rents.car_id AND cities.code = rents.city AND rents.user_id = "'.$user.'"') : 
       $db->get(
-        'rents.id as rentId, users.username, users.name, users.surname, users.age, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
-        'cars, cities, users, rents',
-        'WHERE cars.id = rents.car_id AND cities.code = rents.city AND users.username = rents.user_id');
+        'rents.id as rentId, rents.user_id, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
+        'cars, cities, rents',
+        'WHERE cars.id = rents.car_id AND cities.code = rents.city');
 
-    if(isAssoc($rents)) $rents = [$rents];
+    if(Utils::isAssoc($rents)) $rents = [$rents];
 
     foreach ($rents as $rent) {
       $startDate = new DateTime($rent['startDate']);
@@ -25,10 +25,7 @@ function getRents ($user = null) {
       $temp .= '<tr data-rentid="'.$rent['rentId'].'">';
 
       if (!$user) {
-        $temp .= '<td>'.$rent['username'].'</td>
-        <td>'.$rent['name'].'</td>
-        <td>'.$rent['surname'].'</td>
-        <td>'.$rent['age'].'</td>';
+        $temp .= '<td>'.$rent['user_id'].'</td>';
       }
 
       $temp .= 
@@ -48,7 +45,7 @@ function getRents ($user = null) {
     $db->close();
   } catch (NotFoundException $e) {
     $temp = errorLine(
-      $user ? 7 : 11, 
+      $user ? 7 : 8, 
       $user ? 
         '<p>You haven\'t rented any car yet</p>
           <a href="/cars" title="Go to the cars list"><span class="bold">Do it now!</span></a>' :
@@ -67,7 +64,7 @@ function getAdminCars() {
 
     $cars = $db->get('cars.id as car_id, cars.brand, cars.model, cars.age, stock.quantity', 'cars, stock', 'WHERE cars.id = stock.car_id ORDER BY cars.brand');
 
-    if(isAssoc($cars)) $cars = [$cars];
+    if(Utils::isAssoc($cars)) $cars = [$cars];
     foreach ($cars as $car) {
       $temp .= 
         '<tr>
@@ -104,13 +101,14 @@ function getUsersList() {
   try {
     $db = new Database();
 
-    $users = $db->get('username, name, surname, scope, age, city, fav_car', 'users', 'order by scope asc, username asc, surname asc, name asc, age asc');
+    $users = $db->get('username, email, name, surname, scope, age, city, fav_car', 'users', 'order by scope asc, username asc, surname asc, name asc, age asc');
 
-    if(isAssoc($users)) $users = [$users];
+    if(Utils::isAssoc($users)) $users = [$users];
     foreach ($users as $user) {
       $temp .= 
         '<tr>
           <td>'.$user['username'].'</td>
+          <td>'.$user['email'].'</td>
           <td>'.$user['surname'].'</td>
           <td>'.$user['name'].'</td>
           <td>'.$user['age'].'</td>
@@ -126,9 +124,9 @@ function getUsersList() {
     }
     $db->close();
   } catch (NotFoundException $e) {
-    $temp = errorLine(8, '<p>There are no users in our database, add one to get started!</p>');
+    $temp = errorLine(9, '<p>There are no users in our database, add one to get started!</p>');
   } catch (Exception $e) {
-    $temp = errorLine(8, '<p>An error occured while fetching the users list</p>');
+    $temp = errorLine(9, '<p>An error occured while fetching the users list</p>');
   }
   return $temp;
 }
@@ -140,7 +138,7 @@ function getMessages() {
 
     $messages = $db->get('messages.id as msg_id, users.username, users.name, users.surname, users.email, messages.message, messages.object', 'users, messages', 'where users.username = messages.user_id and messages.answered = 0');
 
-    if(isAssoc($messages)) $messages = [$messages];
+    if(Utils::isAssoc($messages)) $messages = [$messages];
     foreach ($messages as $msg) {
       $temp .= 
         '<tr class="message_row" data-id="'.$msg['msg_id'].'" data-message="'.$msg['message'].'" data-subject="'.$msg['name'].' '.$msg['surname'].'"'. (!empty($msg['object']) ? 'data-object="'.$msg['object'].'"' : '') .'>

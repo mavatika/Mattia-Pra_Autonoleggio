@@ -19,15 +19,17 @@
               <label for="rent_code">Rent code</label>
               <input type="text" id="rent_code" name="rent" minlength="1" maxlength="6" required >
             </div>
-            <div class="request_form_wrapper">
+            <div class="request_form_wrapper link_to_page">
               <button type="submit" class="primary_btn">Find my rent</button>
-              <a href="/contact.php">Having problems? <span class="bold">Contact us!</span></a>
+              <p class="link_to_page">
+                <a href="/contact.php">Having problems? <span class="link bold">Contact us!</span></a>
+              </p>
             </div>
           </form>
         </article>
       </static>
       <dynamic>
-        <h1>Thank you, { name }</h1>
+        <h1>Thank you, { rent_user }</h1>
         <section class="rented">
           <aside class="container information_box">
             <figure>
@@ -39,13 +41,13 @@
               </figure>
               <div class="success_p_container">
                 <p>
-                  You've rented successfully this wonderful <span class="bold">{ brand } { model }</span> in <span class="bold">{ city }</span> for a total of <span class="bold">{ price }€</span>
+                  You've rented successfully this wonderful <a href="/cars/item.php?id={ car_id }" class="bold">{ brand } { model }</a> in <span class="bold">{ city }</span> for a total of <span class="bold">{ price }€</span>
                 </p>
                 <p>
                   Your rent lasts <span class="bold">{ duration }</span>, from <span class="bold">{ startDate }</span> to <span class="bold">{ endDate }</span>
                 </p>
                 <p>
-                  ⏰ Remember to be in <span class="bold">{ address }</span> at <span class="bold">9:00AM!</span>
+                  ⏰ Remember to be in <a href="https://maps.google.com/?q={ address }" class="bold">{ address }</a> at <span class="bold">9:00AM!</span>
                 </p>
               </div>
             </div>

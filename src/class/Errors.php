@@ -1,5 +1,28 @@
 <?php
 
+set_exception_handler(function($ex) {
+  $error = '';
+  switch (get_class($ex)) {
+    case 'DatabaseException':
+      $error = '<p>'.$ex->getMessage().'</p>';
+      break;
+    case 'DieProgramException':
+      $error = '<p>🛑A fatal error occured, please contact the site owner:<br><br>'.$ex->getMessage().'</p>';
+      break;
+    default:
+      $error = '<p>⚠️We caught this unknown error, please inform our engineer:<br><br>'.$ex.'</p>';
+      break;
+  }
+  $page = new Template('errorpage');
+  $user = new User();
+  $userdata = $user->loggedIn ? $user->getUser() : [];
+  $page->putDynamicContent(array_merge($userdata, [
+    'error' => $error
+  ]));
+  $page->render();
+  exit;
+});
+
 class PasswordException extends Exception {
   public function __construct(string $msg = 'Wrong Password') {
     parent::__construct($msg);

@@ -21,13 +21,10 @@
             <h2>
                 Fast, Cheap, Everywhere
             </h2>
-            <form class="location_wrapper" action="/cars/rent.php">
+            <form class="location_wrapper" action="/cars" method="GET">
                 <div class="where2rent_wrapper">
-                    <!-- <input type="search" id="where2rent" maxlength="50" minlength="3" list="cities" placeholder="New York, Los Angeles, ..." name="where" required> -->
-                    <select name="where" id="where2rent" required>
-                        { cities }
-                    </select>
-                    <label for="where2rent">Where do you want to rent?</label>
+                    <input type="search" id="car_filter" maxlength="50" minlength="3" placeholder="Tesla, SUV, Hypercar, ..." name="filter" required>
+                    <label for="car_filter">Which car do you desire?</label>
                     
                     <button type="submit" class="icon_wrapper" title="Rent a car in...">
                         <img src="img/icons/arrow-right-circle.svg" alt="Rent a car here">

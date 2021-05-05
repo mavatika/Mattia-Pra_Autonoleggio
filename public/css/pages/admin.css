@@ -147,7 +147,7 @@ table .set_quantity + span {
 }
 
 .overlay #table_placeholder.adduser {
-  grid-template-columns: repeat(8, auto);
+  grid-template-columns: repeat(9, auto);
 }
 
 .overlay .message_container p {

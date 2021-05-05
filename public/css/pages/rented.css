@@ -24,10 +24,6 @@
 .request_form_wrapper button {
   margin: 10px auto;
 }
-.request_form_wrapper a {
-  font-size: .85rem;
-  color: rgba(0,0,0,.75);
-}
 
 .information_box {
   padding: 0;
@@ -54,9 +50,14 @@
   padding: 15px 25px;
 }
 .success_p_container {
-  padding-left: 25px;;
+  padding-left: 25px;
 }
-.success_container p {
+
+.success_p_container a, .success_p_container a:visited {
+  color: inherit;
+}
+
+.success_p_container p {
   padding: 5px 0;
 }
 

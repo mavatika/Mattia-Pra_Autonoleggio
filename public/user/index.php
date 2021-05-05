@@ -14,23 +14,23 @@ $db = new Database();
 $temp = [];
 
 if (count($_POST) > 0) {
-  if (empty($_GET['s'])) {
+  if (isset($_POST['updateuser'])) {
     try {
       $user->update($_POST['city'], $_POST['fav_car']);
       $temp['user_update'] = '<p class="server_message success_el">User updated successfully</p>';
     } catch (Exception $e) {
       $temp['user_update'] = '<p class="server_message error_el">User update failed</p>';
     }
-  } else if ($user->isAdmin()) {
-    if ($_GET['s'] == 'adduser') {
-      $created = User::signup($_POST['username'], $_POST['password'], $_POST['name'], $_POST['surname'], $_POST['age'], $_POST['city'], $_POST['fav_car'], $_POST['scope']);
+  } else if ($user->isAdmin() && isset($_POST['create_sth'])) {
+    if ($_POST['create_sth'] == 'adduser') {
+      $created = User::signup($_POST['username'], $_POST['password'], $_POST['email'], $_POST['name'], $_POST['surname'], $_POST['age'], $_POST['city'], $_POST['fav_car'], $_POST['scope']);
       $temp['user_add'] = $created === true ? 
         '<p class="server_message success_el">User created</p>' : 
         "<p class='server_message error_el'>$created</p>";
-    } else if ($_GET['s'] == 'addcar') {
+    } else if ($_POST['create_sth'] == 'addcar') {
       try {
         $cc = [];
-        if (!empty($_FILES)) {
+        if (!empty($_FILES['image'])) {
           $d = '/img/pages/cars/cars/';
           $cc['image'] = $d . Template::writeImageToDir($_FILES['image'], $d);
         }

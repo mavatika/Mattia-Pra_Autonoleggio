@@ -16,7 +16,7 @@ $page = new Template('signup');
 
 if (count($_POST) > 0) {
   // RICHIAMATO SE STESSO
-  $params = checkParams(['username', 'password', 'password2', 'email', 'name', 'surname', 'bday']);
+  $params = Utils::checkParams(['username', 'password', 'password2', 'email', 'name', 'surname', 'bday']);
 
   $errors = [];
   $e = '';

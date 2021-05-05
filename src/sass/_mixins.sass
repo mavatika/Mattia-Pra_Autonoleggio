@@ -1,0 +1,36 @@
+=box-shadow($radius, $color, $opacity: false, $spread: 0)
+  $offset: $radius / 2
+  @if $spread == 0
+    $spread: - ($radius / 4)
+  @if $opacity
+    $color: transparentize($color, 0.6)
+  box-shadow: 0 #{$offset}px #{$radius}px #{$spread}px $color
+
+=center($position: absolute, $center: c)
+  position: $position
+  @if $center == c or $center == central
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  @else if $center == v or $center == vertical
+    top: 50%
+    transform: translateY(-50%)
+  @else
+    left: 50%
+    transform: translateX(-50%)
+
+%flex_center
+  display: flex
+  align-items: center
+  justify-content: center
+
+%container
+  padding: 25px 15px
+  border-radius: $border-radius
+
+=max-line-n($n)
+  overflow: hidden
+  text-overflow: ellipsis
+  display: -webkit-box
+  -webkit-line-clamp: $n
+  -webkit-box-orient: vertical

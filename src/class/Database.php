@@ -7,7 +7,7 @@ class Database {
     $this->conn = @new mysqli(getenv('DB_URL').':'.getenv('DB_PORT'), getenv('DB_USER') , getenv('DB_PSW'), getenv('DB_NAME'));
     if ($this->conn->connect_error) {
       // echo $this->conn->connect_error;
-      throw new DatabaseException("For devs only: <span class='bold'>you</span> forgot to turn on the database duh!🤦‍♂️");
+      throw new DatabaseException("For devs only: <span class='bold'>you</span> probably forgot to turn on the database duh!🤦‍♂️");
     }
   }
   

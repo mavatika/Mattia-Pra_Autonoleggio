@@ -57,9 +57,8 @@ function openForm(e) {
   var s = e.target.dataset.form;
   var form = document.querySelector('.create_record');
   form.children[0].className = '';
-  form.action = form.action.split('?')[0] + '?s=';
-
-  form.action += s;
+  form.querySelector('button[type=submit]').value = s;
+  
   var template = document.importNode(document.querySelector('#' + s).content, true);
   form.children[0].appendChild(template);
   form.children[0].classList.add(s);

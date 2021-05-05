@@ -44,37 +44,31 @@
   left: 25px;
   cursor: text;
 }
-.homepage main .main_banner form .where2rent_wrapper select {
+.homepage main .main_banner form .where2rent_wrapper input {
   width: 100%;
   padding: 15px 20px;
   background: white;
   box-shadow: 0 7.5px 15px -3.75px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   font-size: 1.2rem;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.homepage main .main_banner form .where2rent_wrapper select::-ms-expand {
-  display: none;
 }
 @media all and (-ms-high-contrast: none) {
-  .homepage main .main_banner form .where2rent_wrapper select:-ms-input-placeholder {
+  .homepage main .main_banner form .where2rent_wrapper input:-ms-input-placeholder {
     color: transparent !important;
   }
 }
-.homepage main .main_banner form .where2rent_wrapper select::placeholder {
+.homepage main .main_banner form .where2rent_wrapper input::placeholder {
   color: transparent;
   transition: color 0.15s;
 }
-.homepage main .main_banner form .where2rent_wrapper select:valid + label, .homepage main .main_banner form .where2rent_wrapper select:focus + label {
+.homepage main .main_banner form .where2rent_wrapper input:valid + label, .homepage main .main_banner form .where2rent_wrapper input:focus + label {
   left: 5px;
   top: -25%;
 }
-.homepage main .main_banner form .where2rent_wrapper select:valid::placeholder, .homepage main .main_banner form .where2rent_wrapper select:focus::placeholder {
+.homepage main .main_banner form .where2rent_wrapper input:valid::placeholder, .homepage main .main_banner form .where2rent_wrapper input:focus::placeholder {
   color: rgba(0, 0, 0, 0.75);
 }
-.homepage main .main_banner form .where2rent_wrapper select:valid:-ms-input-placeholder, .homepage main .main_banner form .where2rent_wrapper select:focus:-ms-input-placeholder {
+.homepage main .main_banner form .where2rent_wrapper input:valid:-ms-input-placeholder, .homepage main .main_banner form .where2rent_wrapper input:focus:-ms-input-placeholder {
   color: initial !important;
 }
 .homepage main .main_banner form .where2rent_wrapper button[type=submit] {
