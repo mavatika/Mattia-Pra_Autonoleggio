@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2021 alle 10:08
+-- Creato il: Mag 05, 2021 alle 15:53
 -- Versione del server: 10.4.17-MariaDB
 -- Versione PHP: 7.3.27
 
@@ -59,7 +59,8 @@ INSERT INTO `cars` (`id`, `brand`, `model`, `image`, `price`, `engine`, `seats`,
 (00000000004, 'Lamborghini', 'Urus', '/img/pages/cars/cars/f08b10021a3e7ecfb3de1345e51044b0.png', 50, 650, 5, 'Fuel - automatic transmission', 'The Lamborghini Urus is an SUV manufactured by Italian automobile manufacturer Lamborghini. The name comes from the Urus, the ancestor of modern domestic cattle, also known as the aurochs.', 'SUV', 305, 1, 85, 'The Lamborghini Urus concept was unveiled at the 2012 Beijing Auto Show on 23 April 2012. Later, the SUV was also shown at Pebble Beach in 2012. Powered by a 5.2 L V10 engine shared with the Gallardo, the engine generated a theoretical maximum power output of 600 PS (592 hp; 441 kW) and was accompanied with an all-wheel-drive system. The Urus was reported to have the lowest carbon emissions as compared to its stablemates (i.e. the Porsche Cayenne, Bentley Bentayga and the Audi Q7). The Urus was conceived as a perfect daily driver unlike the other offerings from the brand. The sharp-lined exterior design of the SUV takes heavy influence from the company\'s V12 flagship, the Aventador. The production version of the SUV was introduced in 2017 with major changes done to the exterior and featuring a different powertrain than that of the concept.', 'https://www.exclusiverent.com/media/djcatalog2/images/item/0/lamborghini-urus_l.jpg', 'https://images.everyeye.it/img-notizie/il-look-lamborghini-urus-820-cavalli-dir-estremo-v3-426374.jpg', 'https://i2.res.24o.it/images2010/Editrice/ILSOLE24ORE/ILSOLE24ORE/Online/Immagini/ArticleGallery/Motori/2019/03/Ritagli/09-lamborghini-urus-kh5G--835x437@IlSole24Ore-Web.jpg', 1),
 (00000000005, 'Aston Martin', 'DB11', '/img/pages/cars/cars/857c45c77341e580cc6ad64bd380d385.png', 47, 639, 2, 'Fuel - automatic transmission', 'The Aston Martin DB11 is a grand tourer produced by British luxury car manufacturer Aston Martin since 2016.', 'Grand tourer', 334, 1, 78, 'New design features include new roof strakes that separate the body from the roof, available in black or body colour, and the \"Aeroblade\" intakes in the front strakes.\r\nThe bonnet is a \'clam-shell\' design made from a single piece of aluminium. The DB11 does not use the older Aston Martin VH platform but makes use of an all-new riveted and adhesive-bonded aluminium platform that shifts the emphasis from extrusions to stampings to create more cockpit space which would also underpin future Aston Martin models; including the Vantage.', 'https://immagini.alvolante.it/sites/default/files/styles/editor_1_colonna/public/news_galleria/2018/05/aston-martin-db11-amr-2018-05_26.jpg?itok=p8sT4zZ5', 'https://media.torque.com.sg/public/2019/04/db11-amr-interior.jpg', 'https://www.cheautocompro.it/sites/default/files/2020-12/db11-amr-mariana-blue-21..jpg', 2),
 (00000000007, 'Tesla', 'Model X', '/img/pages/cars/cars/3a4387016d64fefeae6168efaa50c186.png', 37, 1023, 5, 'Electric vehicle', 'JDIN', 'Crossover SUV', 263, 1, 0, 'NJEN', 'http://motori.quotidiano.net/wp-content/uploads/2021/01/Restyling-Tesla-Model-S-e-Model-X-la-Plaid-accelera-da-0-a-100-in-21-secondi-8.jpeg', 'https://www.autoelettrica101.it/foto/tesla_model_x_performance_ludicrous_1200px.jpg', 'https://besthqwallpapers.com/Uploads/2-11-2017/26762/thumb2-tesla-model-x-2017-4k-electric-crossover-blue-model-x.jpg', 3),
-(00000000008, 'BMW', 'i8', '/img/pages/cars/cars/e927f5ade820c669f528c9a92f2e2682.png', 27, 374, 2, 'Electric vehicle', 'The BMW i8 is a plug-in hybrid sports car developed by BMW. The i8 is part of BMW\'s electrified fleet and is marketed under the BMW i sub-brand.', 'Sport car', 250, 1, 0, 'The production BMW i8 was designed by Benoit Jacob. The production version was unveiled at the 2013 International Motor Show Germany, followed by 2013 Les Voiles de Saint-Tropez. Its design is heavily influenced by the BMW M1 Homage concept car, which in turn pays homage to BMW\'s last production mid-engined sports car prior to the i8: the BMW M1.\r\n\r\nThe BMW i8 features butterfly doors, head-up display, rear-view cameras and partially false engine noise. Series production of customer vehicles began in April 2014. The electric two-speed drivetrain is developed and produced by GKN. It was the first production car with laser headlights, reaching further than LED lights.\r\n\r\nThe i8 has a vehicle weight of 1,485 kg (3,274 lb) (DIN kerb weight) and a low drag coefficient (Cd) of 0.26. In all-electric mode the BMW i8 has a top speed of 120 km/h (75 mph). In Sport mode the i8 delivers a mid-range acceleration from 80 to 120 km/h (50 to 75 mph) in 2.6 seconds. The electronically controlled top speed is 250 km/h (155 mph).\r\n\r\nThe 20,000th i8 was produced in December 2019, one of the limited Ultimate Sophisto Edition models. The production cycle of the i8 ended in June 2020. In total, there were 20,465 units produced: 16,581 coupés and 3,884 roadsters.', 'https://wheels.iconmagazine.it/content/uploads/2019/04/BMW-i8-Roadster.jpg', 'https://www.bmw.it/content/dam/bmw/common/all-models/i-series/i8-coupe/2017/at-a-glance/bmw-i8-coupe-home-gallery-lines-01-ivory-white.jpg', 'https://cdn.prod.www.manager-magazin.de/images/a487db31-0001-0004-0000-000000531679_w1200_r1.33_fpx35.24_fpy49.87.jpg', 2);
+(00000000008, 'BMW', 'i8', '/img/pages/cars/cars/e927f5ade820c669f528c9a92f2e2682.png', 27, 374, 2, 'Electric vehicle', 'The BMW i8 is a plug-in hybrid sports car developed by BMW. The i8 is part of BMW\'s electrified fleet and is marketed under the BMW i sub-brand.', 'Sport car', 250, 1, 0, 'The production BMW i8 was designed by Benoit Jacob. The production version was unveiled at the 2013 International Motor Show Germany, followed by 2013 Les Voiles de Saint-Tropez. Its design is heavily influenced by the BMW M1 Homage concept car, which in turn pays homage to BMW\'s last production mid-engined sports car prior to the i8: the BMW M1.\r\n\r\nThe BMW i8 features butterfly doors, head-up display, rear-view cameras and partially false engine noise. Series production of customer vehicles began in April 2014. The electric two-speed drivetrain is developed and produced by GKN. It was the first production car with laser headlights, reaching further than LED lights.\r\n\r\nThe i8 has a vehicle weight of 1,485 kg (3,274 lb) (DIN kerb weight) and a low drag coefficient (Cd) of 0.26. In all-electric mode the BMW i8 has a top speed of 120 km/h (75 mph). In Sport mode the i8 delivers a mid-range acceleration from 80 to 120 km/h (50 to 75 mph) in 2.6 seconds. The electronically controlled top speed is 250 km/h (155 mph).\r\n\r\nThe 20,000th i8 was produced in December 2019, one of the limited Ultimate Sophisto Edition models. The production cycle of the i8 ended in June 2020. In total, there were 20,465 units produced: 16,581 coupés and 3,884 roadsters.', 'https://wheels.iconmagazine.it/content/uploads/2019/04/BMW-i8-Roadster.jpg', 'https://www.bmw.it/content/dam/bmw/common/all-models/i-series/i8-coupe/2017/at-a-glance/bmw-i8-coupe-home-gallery-lines-01-ivory-white.jpg', 'https://cdn.prod.www.manager-magazin.de/images/a487db31-0001-0004-0000-000000531679_w1200_r1.33_fpx35.24_fpy49.87.jpg', 2),
+(00000000009, 'Bentley', 'Continental GT', '/img/pages/cars/cars/cd07882d473e85cc16c38cdb8eadf941.png', 27, 550, 4, 'Fuel - automatic transmission', 'The Bentley Continental GT is a grand tourer manufactured and marketed by British automaker Bentley Motors since 2003.', 'Grand tourer', 335, 0, 90, 'In 1994, Rolls-Royce Motors who at that time owned the Bentley brand, previewed a convertible concept car at the Geneva Motor Show – the Concept Java. The car was designed to be a highly desirable Bentley, but smaller, more affordable, yet still exclusive in order to maintain the integrity of the brand. It was to appeal to a new range of potential buyers and generate increase sales volume for Rolls-Royce. At the time the current Bentley Continental R was an ultra-exclusive £180,000 in the UK, within reach of a very select market, selling only 2-300 units a year. The Concept Java never went into production in the form seen in 1994, although 13 cars were made for the Sultan of Brunei. However, the Bentley Continental GT realised the concept of the Java as a more affordable Bentley, manufactured in much larger volumes. Whilst external styling is different, the dashboard design was clearly influenced by the Java.\r\n\r\nThe Continental GT was marketed to new customers with an average age of just under 50 years old, with 75% upper luxury coupé buyer not from existing customer base.\r\n\r\nBreitling SA produced a limited edition (1000 units per colour) Breitling for Bentley Supersports chronograph wrist watches (based on Breitling Calibre 26B) inspired by the Bentley Continental Supersports car.\r\n\r\nBreitling SA produced a series of 1000-unit Bentley Supersports Light Body wrist watches (based on the Breitling Calibre 27B) to commemorate the Bentley Continental Supersports Convertible\'s ice speed record. The watch was unveiled at Baselworld in 2011.', 'https://statics.quattroruote.it/news/nuovi-modelli/2020/09/16/bentley_continental_gt_mulliner_caratteristiche_motore_interni_della_coupe/jcr:content/image.img2.social.jpg/1600247876342.jpg', 'https://www.autoscout24.it/assets/auto/images/model/bentley/bentley-continental-gt/bentley-continental-gt-l-04.jpg', 'https://www.lifersblog.com/novita-auto/wp-content/uploads/2020/09/bentley-continental-gt-mulliner_2.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -118,6 +119,19 @@ CREATE TABLE `rents` (
   `duration` tinyint(4) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `rents`
+--
+
+INSERT INTO `rents` (`id`, `car_id`, `user_id`, `city`, `startDate`, `duration`) VALUES
+(52, 00000000004, 'admin', 'MI', '2021-05-30', 5),
+(54, 00000000004, 'mario.rossi@ciao.it', 'MU', '2021-05-22', 3),
+(55, 00000000009, 'NDIWLM@ndne.it', 'CS', '2021-05-14', 4),
+(56, 00000000004, 'frewf@rnjf.it', 'NY', '2021-05-23', 3),
+(57, 00000000008, 'admin', 'MU', '2021-05-27', 4),
+(58, 00000000005, 'luigi.verdi@ciao.it', 'CS', '2021-05-22', 3),
+(59, 00000000003, 'admin', 'MI', '2021-05-29', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -136,11 +150,12 @@ CREATE TABLE `stock` (
 INSERT INTO `stock` (`car_id`, `quantity`) VALUES
 (00000000001, 0),
 (00000000002, 13),
-(00000000003, 7),
-(00000000004, 5),
-(00000000005, 8),
+(00000000003, 6),
+(00000000004, 2),
+(00000000005, 7),
 (00000000007, 5),
-(00000000008, 1);
+(00000000008, 0),
+(00000000009, 0);
 
 -- --------------------------------------------------------
 
@@ -165,7 +180,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`username`, `password`, `email`, `scope`, `name`, `surname`, `age`, `city`, `fav_car`) VALUES
-('admin', '$2y$10$Y790ALV8VCgJa6uetHqzlOtWztrVPh9PhcfsJsM9Lcqggyivewa8q', 'admin@admin.it', 'admin', 'Admin', 'DotDot', 50, 'LV', 'Tesla');
+('admin', '$2y$10$Y790ALV8VCgJa6uetHqzlOtWztrVPh9PhcfsJsM9Lcqggyivewa8q', 'admin@admin.it', 'admin', 'Admin', 'DotDot', 50, 'LV', 'Tesla'),
+('frewf@rnjf.it', NULL, 'frewf@rnjf.it', 'temp', 'GTF', 'GTREG', 20, NULL, NULL),
+('luigi.verdi@ciao.it', NULL, 'luigi.verdi@ciao.it', 'temp', 'Luigi', 'Verdi', 20, NULL, NULL),
+('mario.rossi@ciao.it', NULL, 'mario.rossi@ciao.it', 'temp', 'Mario', 'Rossi', 20, NULL, NULL),
+('NDIWLM@ndne.it', NULL, 'NDIWLM@ndne.it', 'temp', 'Lajhf', 'Nowdeni', 20, NULL, NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -219,7 +238,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT per la tabella `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `messages`
@@ -231,7 +250,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT per la tabella `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Limiti per le tabelle scaricate

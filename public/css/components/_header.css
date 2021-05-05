@@ -6,7 +6,7 @@ header {
   right: 0;
   width: 100%;
   max-width: 100vw;
-  background: linear-gradient(to bottom, white, transparent);
+  background: linear-gradient(to bottom, white 10%, transparent);
   display: flex;
   justify-content: space-between;
   align-items: center;
