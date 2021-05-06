@@ -22,11 +22,11 @@ $dynamic = [
 $userdata = $user->getUser();
 try {
   if (!empty($_GET['filter'])) {
-    array_push($rest, "brand LIKE '%".$_GET['filter']."%' OR model LIKE '%".$_GET['filter']."%' OR category LIKE '%".$_GET['filter']."%'");
+    array_push($rest, "(brand LIKE '%".$_GET['filter']."%' OR model LIKE '%".$_GET['filter']."%' OR category LIKE '%".$_GET['filter']."%')");
   }
   if ($user->loggedIn) {
     $tables .= ', users';
-    array_push($rest, "users.username = '".$userdata['username']."' ORDER BY CASE WHEN brand >= users.fav_car THEN 1 ELSE 0 END DESC, brand ASC");
+    array_push($rest, "(users.username = '".$userdata['username']."') ORDER BY CASE WHEN brand >= users.fav_car THEN 1 ELSE 0 END DESC, brand ASC");
     $dynamic = array_merge($dynamic, $userdata);
   }
   if (count($rest) > 1) {
