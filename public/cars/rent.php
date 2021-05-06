@@ -76,8 +76,6 @@ try {
   header('Location:'.$_SERVER['REQUEST_URI']);
 }
 
-print_r($_SESSION);
-
 $d = [
   'errors' => !empty($errs) > 0 ? $errs : '',
   'cities' => getCities($db), 
