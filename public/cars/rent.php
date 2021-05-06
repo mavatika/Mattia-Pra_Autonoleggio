@@ -25,20 +25,17 @@ if (count($_POST) > 0) {
         $now = new DateTime();
         $age = $now->diff($bday)->y;
         $userData = User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email'], $age);
-        $_SESSION['temp_user'] = $_REQUEST['email'];
+        $_SESSION['temp_user'] = $userData['username'];
       } else {
         $userData = $user->getUser();
       }
 
       $startDate = new DateTime($_REQUEST['startDate']);
-      
-      print_r($_REQUEST);
-      print_r($_SESSION);
 
       // Il controllo sul $_REQUEST['car'] serve a verificare che l'utente non abbia voluto cambiare la macchina all'ultimo premendo il Reset del form
       $carID = isset($_REQUEST['car']) ? $_REQUEST['car'] : $_SESSION['car_id'];
-      echo "CAR ID:  ". $carID;
       if (empty($carID)) throw new Error('CAR ID EMPTY');
+
       $rent = [
         'car_id' => $carID,
         'user_id' => $userData['username'],
@@ -50,11 +47,14 @@ if (count($_POST) > 0) {
       $response = $db->update([
         'quantity' => 'GREATEST(0, quantity - 1)'
       ], 'stock', "car_id = $carID");
+
+      if (!$user->loggedIn && ($response == 'not-found' || $response == 'update-not-needed')) $db->delete('users', "username = '" . $userData['username'] . "'");
       
       if ($response == 'not-found') $errs .= '<p class="server_message error_el">We haven\'t found this car in our database</p>'."\n";
       if ($response == 'update-not-needed') $errs .= '<p class="server_message error_el">This car is not available in this moment, try again later</p>'."\n";
       if ($response == 'success') {
         $_SESSION['rent'] = $db->put($rent, 'rents');
+        unset($_SESSION['car_id']);
         header("Location:/cars/rented.php");
         exit;
       }
@@ -75,6 +75,8 @@ try {
 } catch (Exception $e) {
   header('Location:'.$_SERVER['REQUEST_URI']);
 }
+
+print_r($_SESSION);
 
 $d = [
   'errors' => !empty($errs) > 0 ? $errs : '',

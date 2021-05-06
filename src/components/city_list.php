@@ -18,7 +18,7 @@ function getCars($db = null, $carId) {
   $toClose = $db == null;
   if (!$db) $db = new Database();
 
-  $cars = $db->get('id, brand, model, image', 'cars', 'order by brand');
+  $cars = $db->get('id, brand, model, image', 'cars, stock', 'where cars.id = stock.car_id and stock.quantity > 0 order by brand, model');
   $c = '';
 
 
