@@ -62,7 +62,7 @@ function getAdminCars() {
   try {
     $db = new Database();
 
-    $cars = $db->get('cars.id as car_id, cars.brand, cars.model, cars.age, stock.quantity', 'cars, stock', 'WHERE cars.id = stock.car_id ORDER BY cars.brand');
+    $cars = $db->get('cars.id as car_id, cars.brand, cars.model, cars.age, stock.quantity', 'cars, stock', 'WHERE cars.id = stock.car_id ORDER BY cars.brand, cars.model');
 
     if(Utils::isAssoc($cars)) $cars = [$cars];
     foreach ($cars as $car) {
@@ -136,7 +136,7 @@ function getMessages() {
   try {
     $db = new Database();
 
-    $messages = $db->get('messages.id as msg_id, users.username, users.name, users.surname, users.email, messages.message, messages.object', 'users, messages', 'where users.username = messages.user_id and messages.answered = 0');
+    $messages = $db->get('messages.id as msg_id, users.username, users.name, users.surname, users.email, messages.message, messages.object', 'users, messages', 'where users.username = messages.user_id and messages.answered = 0 order by brand, model');
 
     if(Utils::isAssoc($messages)) $messages = [$messages];
     foreach ($messages as $msg) {
