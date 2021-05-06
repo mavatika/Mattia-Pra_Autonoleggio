@@ -47,7 +47,6 @@ if (count($_POST) > 0) {
           $temp['car_add'] = '<p class="server_message success_el">Car created successfully</p>';
         } else $temp['car_add'] =  "<p class='server_message error_el'>$car_id</p>";
       } catch (Exception $e) {
-        echo $e;
         $temp['car_add'] = "<p class='server_message error_el'>".$e->getMessage()."</p>";
       }
     }

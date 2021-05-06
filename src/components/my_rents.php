@@ -156,7 +156,6 @@ function getMessages() {
   } catch (NotFoundException $e) {
     $temp = errorLine(3, '<p>There are no messages in the inbox</p>');
   } catch (Exception $e) {
-    echo $e;
     $temp = errorLine(3, '<p>An error occured while fetching the messages</p>');
   }
   return $temp;
