@@ -41,13 +41,13 @@
               </figure>
               <div class="success_p_container">
                 <p>
-                  You've rented successfully this wonderful <a href="/cars/item.php?id={ car_id }" class="bold">{ brand } { model }</a> in <span class="bold">{ city }</span> for a total of <span class="bold">{ price }€</span>
+                  You've rented successfully this wonderful <a href="/cars/item.php?id={ car_id }" class="bold" target="_blank">{ brand } { model }</a> in <span class="bold">{ city }</span> for a total of <span class="bold">{ price }€</span>
                 </p>
                 <p>
                   Your rent lasts <span class="bold">{ duration }</span>, from <span class="bold">{ startDate }</span> to <span class="bold">{ endDate }</span>
                 </p>
                 <p>
-                  ⏰ Remember to be in <a href="https://maps.google.com/?q={ address }" class="bold">{ address }</a> at <span class="bold">9:00AM!</span>
+                  ⏰ Remember to be in <a href="https://maps.google.com/?q={ address }" target="_blank" class="bold">{ address }</a> at <span class="bold">9:00AM!</span>
                 </p>
               </div>
             </div>
@@ -65,7 +65,7 @@
             <p>
               Show this QR Code to the officer when you arrive to the pickup point
             </p>
-            <a class="bold" href="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data={ qr_code }" download>Download code</a>
+            <a class="bold" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=400x400&data={ qr_code }" download>Download code</a>
           </article>
         </section>
       </dynamic>

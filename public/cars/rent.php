@@ -58,6 +58,8 @@ if (count($_POST) > 0) {
         header("Location:/cars/rented.php");
         exit;
       }
+    } catch (DatabaseException $e) {
+      if (strpos($e->getMessage(), 'Duplicate entry') !== false) $errs .= '<p class="server_message warning_el">Sembra che questa e-mail sia già associata a una prenotazione, prova con un altro indirizzo</p>'."\n";
     } catch (Exception $e) { $errs .= '<p class="server_message error_el">'.$e.'</p>'."\n"; }
   } else {
     foreach ($params as $el) {
