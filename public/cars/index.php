@@ -29,10 +29,11 @@ try {
     array_push($rest, "users.username = '".$userdata['username']."' ORDER BY CASE WHEN brand >= users.fav_car THEN 1 ELSE 0 END DESC, brand ASC");
     $dynamic = array_merge($dynamic, $userdata);
   }
-  if (count($rest) > 0) {
+  if (count($rest) > 1) {
     $rest = "WHERE " . join(' AND ', $rest);
     $rest = substr($rest, 0, -4);
-  } else $rest = '';
+  } else if (count($rest) == 1) $rest = "WHERE " . $rest[0];
+  else $rest = '';
   $cars = $db->get('cars.id, cars.brand, cars.model, cars.image, cars.price, cars.speed, cars.seats, cars.engine', $tables, $rest);
 } catch (NotFoundException $e) {
   if ($user->loggedIn) {

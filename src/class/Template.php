@@ -2,7 +2,7 @@
 class Template {
   const REGEX = '/\{(.*?)\}/';
   
-  private $page;
+  private $page = '';
   
   public function __construct(string $file_needed, $isStatic = true, bool $shouldCalluseStatic = true) {
     if(empty($file_needed)) throw new Exception("File Needed", 1);
@@ -15,7 +15,7 @@ class Template {
       if ($cmp == 'cookie_banner' && !empty($_COOKIE['cookie_banner'])) $this->page = str_replace($str, '', $this->page);
       else if ($cmp == 'common_head') $this->page = str_replace($str, self::commonHead() , $this->page);
       else {
-        $component = @include_once($_SERVER['DOCUMENT_ROOT'].'/src/components/'.$cmp.'.php');
+        $component = @include($_SERVER['DOCUMENT_ROOT'].'/src/components/'.$cmp.'.php');
         if (isset($component['template'])) $this->page = str_replace($str, $component['template'], $this->page);
         if (isset($component['head'])) $this->writeHeader($component['head']);
       }
@@ -47,6 +47,10 @@ class Template {
       if (isset($d[$index])) $this->page = str_replace($str, $d[$index], $this->page);
     }
 
+  }
+
+  public function empty() {
+    $this->page = '';
   }
 
   public function render() {

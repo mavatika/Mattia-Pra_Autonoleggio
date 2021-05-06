@@ -4,7 +4,7 @@ set_exception_handler(function($ex) {
   $error = '';
   switch (get_class($ex)) {
     case 'DatabaseException':
-      $error = '<p>'.$ex->getMessage().'</p>';
+      $error = '<p>An error within the database occured, please try again:<br><br>'.$ex->getMessage().'</p>';
       break;
     case 'DieProgramException':
       $error = '<p>🛑A fatal error occured, please contact the site owner:<br><br>'.$ex->getMessage().'</p>';
