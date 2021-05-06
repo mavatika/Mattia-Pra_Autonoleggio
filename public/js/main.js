@@ -28,14 +28,10 @@ function cookies() {
 }
 
 function hamburger() {
-	if (window.innerWidth > 768) return false;
 	var hamburger = document.querySelector('.hamburger');
 	hamburger.addEventListener('click', function () {
-		var c = hamburger.classList;
-		console.log(c)
-		if (!Array.from(c).includes('hamburger_active')) c.add('hamburger_active');
-		else c.remove('hamburger_active');
-	})
+		hamburger.classList.toggle('hamburger_active');
+	});
 }
 
 function handleSpaceOrEnter() {
