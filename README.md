@@ -8,6 +8,12 @@
 
   Nel file .env è presente un parametro `TOKEN_KEY`: si tratta della chiave di cifratura usata nell'algoritmo di hashing (MD5) durante la generazione dei token delle prenotazioni.
 
+  Per il corretto funzionamento è richiesto impostare nel file httpd.conf questi valori:
+  ```bash
+  DocumentRoot "C:/xampp/htdocs/path/alla/cartella"
+  <Directory "C:/xampp/htdocs/path/alla/cartella">
+  ```
+
 ## Spiegazioni delle classi:  
   ### Token:
   Il token viene generato usando una mia personale implementazione seguendo circa il meccanismo di sicurezza usato dai JsonWebToken (ho solo voluto tenerli molto più semplici e rapidi per non utilizzare librerie esterne al progetto per fare quanto di cui io avessi bisogno).
