@@ -13,6 +13,10 @@
   DocumentRoot "C:/xampp/htdocs/path/alla/cartella"
   <Directory "C:/xampp/htdocs/path/alla/cartella">
   ```
+  Se ciò non venisse fatto PHP e il rewrite degli URLs non avverrebbe correttamente, risultando in un non funzionamento del sito.
+  Il sito sfrutta una semplice regola di rewrite degli URLs alla cartella /public per rendere un po’ più sicuro l’accesso ai files.
+  
+  Per usufruire del sito, navigare su [Localhost root](http://localhost/)
 
 ## Spiegazioni delle classi:  
   ### Token:
