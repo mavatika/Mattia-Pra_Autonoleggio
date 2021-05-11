@@ -11,7 +11,7 @@ function ready() {
       var parent = e.target.parentNode;
       if (parent.dataset.rentid) location.assign('/cars/rented.php?rent=' + parent.dataset.rentid);
       else if (parent.className === 'message_row') {
-        openOverlay('message_template', openMessage, parent.dataset);
+        openOverlay('message_template', openMessage, parent);
       }
     });
   });
@@ -45,11 +45,11 @@ function closeOverlay() {
   }, 200);
 }
 
-function openMessage(data) {
+function openMessage(tr) {
   var container = document.querySelector('.message_container');
-  container.querySelector('h3').textContent = 'Message from: ' + data.subject;
-  container.querySelector('p').textContent = data.message;
-  container.querySelector('a').href = '/user/index.php?markcomplete=' + data.id;
+  container.querySelector('h3').textContent = 'Message from: ' + tr.dataset.subject;
+  container.querySelector('p').textContent = tr.children[0].innerHTML.trim();
+  container.querySelector('a').href = '/user/index.php?markcomplete=' + tr.dataset.id;
 
 }
 

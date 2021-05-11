@@ -24,7 +24,7 @@ $userData = [];
 if ($user->loggedIn) $userData = $user->getUser();
 
 $page->putDynamicContent(array_merge($userData, [
-  'should_ask_email' => empty($rentID) && !$user->loggedIn && empty($_SESSION['temp_user']) ? '<div class="input_wrapper">
+  'should_ask_email' => !$user->loggedIn && empty($_SESSION['temp_user']) ? '<div class="input_wrapper">
             <label for="email">Type the email you used to rent the car</label>
             <input type="email" name="email" id="email" autocomplete="email" placeholder="mario.rossi@dominio.it" required>
           </div>' : ''

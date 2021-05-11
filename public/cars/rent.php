@@ -24,7 +24,12 @@ if (count($_POST) > 0) {
         $bday = new DateTime($_REQUEST['bday']);
         $now = new DateTime();
         $age = $now->diff($bday)->y;
-        $userData = User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email'], $age);
+        try {
+          $userData = User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email'], $age);
+        } catch (DatabaseException $e) {
+          $userData = $db->get('*', 'users', "WHERE username = '".$_REQUEST['email']."'");
+          unset($userData['password']);
+        }
         $_SESSION['temp_user'] = $userData['username'];
       } else {
         $userData = $user->getUser();
@@ -58,8 +63,7 @@ if (count($_POST) > 0) {
         header("Location:/cars/rented.php");
         exit;
       }
-    } catch (DatabaseException $e) {
-      if (strpos($e->getMessage(), 'Duplicate entry') !== false) $errs .= '<p class="server_message warning_el">Sembra che questa e-mail sia già associata a una prenotazione, prova con un altro indirizzo</p>'."\n";
+    } catch (DatabaseException $e) { $errs .= '<p class="server_message error_el">'.$e.'</p>'."\n"; 
     } catch (Exception $e) { $errs .= '<p class="server_message error_el">'.$e.'</p>'."\n"; }
   } else {
     foreach ($params as $el) {

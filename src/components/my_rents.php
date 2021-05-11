@@ -72,11 +72,11 @@ function getAdminCars() {
           <td>'.$car['model'].'</td>
           <td>'.$car['age'].'</td>
           <td>
-            <a '. ($car['quantity'] > 0 ? 'href="/user/index.php?carquantity='.$car['car_id'].'&q=-1"' : 'disabled') .' class="set_quantity icon_wrapper" title="Decrease">
+            <a '. ($car['quantity'] > 0 ? 'href="/user/index.php?carquantity='.$car['car_id'].'&amp;q=-1"' : 'disabled') .' class="set_quantity icon_wrapper" title="Decrease">
               -
             </a>
             <span>'.$car['quantity'].'</span>
-            <a href="/user/index.php?carquantity='.$car['car_id'].'&q=1" class="set_quantity icon_wrapper" title="Increase">
+            <a href="/user/index.php?carquantity='.$car['car_id'].'&amp;q=1" class="set_quantity icon_wrapper" title="Increase">
               +
             </a>
           </td>
@@ -136,12 +136,12 @@ function getMessages() {
   try {
     $db = new Database();
 
-    $messages = $db->get('messages.id as msg_id, users.username, users.name, users.surname, users.email, messages.message, messages.object', 'users, messages', 'where users.username = messages.user_id and messages.answered = 0 order by brand, model');
+    $messages = $db->get('messages.id as msg_id, users.username, users.name, users.surname, users.email, messages.message, messages.object', 'users, messages', 'where users.username = messages.user_id and messages.answered = 0');
 
     if(Utils::isAssoc($messages)) $messages = [$messages];
     foreach ($messages as $msg) {
       $temp .= 
-        '<tr class="message_row" data-id="'.$msg['msg_id'].'" data-message="'.$msg['message'].'" data-subject="'.$msg['name'].' '.$msg['surname'].'"'. (!empty($msg['object']) ? 'data-object="'.$msg['object'].'"' : '') .'>
+        '<tr class="message_row" data-id="'.$msg['msg_id'].'" data-subject="'.$msg['name'].' '.$msg['surname'].'" '. (!empty($msg['object']) ? 'data-object="'.$msg['object'].'"' : '') .'>
           <template>'.$msg['message'].'</template>
           <td title="'.$msg['username'].'">'.$msg['username'].'</td>
           <td>'.(!empty($msg['object']) ? $msg['object'] : $msg['message']).'</td>
@@ -156,6 +156,7 @@ function getMessages() {
   } catch (NotFoundException $e) {
     $temp = errorLine(3, '<p>There are no messages in the inbox</p>');
   } catch (Exception $e) {
+    echo $e;
     $temp = errorLine(3, '<p>An error occured while fetching the messages</p>');
   }
   return $temp;

@@ -32,7 +32,7 @@ function createCar(array $car) {
             </div>
         </div>
     </div>
-    <a class="primary_btn" title="I want this one" href="/cars/item.php?id=' . $car['id'] . '">Rent</a>
+    <button type="submit" name="id" value="' . $car['id'] . '" class="primary_btn" title="I want this one">Rent</button>
     </article>';
 }
 

@@ -41,6 +41,7 @@ try {
       $db->get('username', 'users', "where username = '". $userdata['username'] ."'");
     } catch (NotFoundException $e) {
       header('Location:/user/logout.php');
+      exit;
     }
   }
 }

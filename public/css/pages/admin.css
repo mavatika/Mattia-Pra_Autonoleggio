@@ -152,6 +152,7 @@ table .set_quantity + span {
 
 .overlay .message_container p {
   padding: 10px 0;
+  white-space: pre-wrap;
 }
 .overlay .message_container a {
   margin-top: 20px;
