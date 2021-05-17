@@ -44,12 +44,12 @@
 ## Uso delle sessioni
   Le sessioni sono utilizzate per due scopi distinti:
   1. **Mantenimento della sessione di login →** in ogni pagina viene istanziato un oggetto User che nel costruttore verifica che esista una sessione di login attiva, recupera i dati salvati di quest’ultima (nome, cognome, username dell’utente, in quanto necessari in ogni pagina per stampare l’header), altrimenti questo oggetto avrà un attributo *loggedIn* settato a false, permettendo di gestire correttamente i vari casi
-  2. **Fase di noleggio →**
-    - Utente effettua una ricerca testuale su 3 campi (Brand, Model e Category) del veicolo tramite richiesta GET da pagina Home a pagina /cars
-    - Nella pagina /cars gli ID delle macchine sono inseriti come value di tanti <button type=”submit”> con lo stesso name, racchiusi tutti in un grande form contenitore
-    - Cliccando sul bottone di submit di una macchina viene richiesta tramite GET la pagina /cars/item.php? la quale salva nella sessione l’ID della macchina recuperato tramite GET, così da non doverlo passare ogni volta tramite richiesta HTTP
-    - Nella pagina /cars/item.php l’utente cliccando sul pulsante di prenota viene riportato alla pagina /cars/rent.php (accessibile anche per link diretto dalla Homepage) controlla  l’esistenza dell’ID della macchina in sessione, se presente disabilita la SELECT di scelta della macchina, altrimenti resta attiva.
-    - Eseguendo il submit del form lo script PHP controlla l’esistenza nell’array $_REQUEST di una chiave “car_id” in quanto l’utente potrebbe sempre decidere di effettuare il reset del form in /cars/rent.php e quindi cambiare la macchina scelta tramite il “flusso normale”
-    - Lo script PHP registra la prenotazione e salva l’ID della prenotazione in sessione, così da poter mostrare in modo efficace la pagina di avvenuta prenotazione (/cars/rented.php) senza dover passare parametri tramite querystring (nonostante questo metodo sia comunque permesso per poter visualizzare le prenotazioni in tempi differiti al processo di prenotazione)
+  2. Fase di noleggio →
+     - Utente effettua una ricerca testuale su 3 campi (Brand, Model e Category) del veicolo tramite richiesta GET da pagina Home a pagina /cars
+     - Nella pagina /cars gli ID delle macchine sono inseriti come value di tanti <button type=”submit”> con lo stesso name, racchiusi tutti in un grande form contenitore
+     - Cliccando sul bottone di submit di una macchina viene richiesta tramite GET la pagina /cars/item.php? la quale salva nella sessione l’ID della macchina recuperato tramite GET, così da non doverlo passare ogni volta tramite richiesta HTTP
+     - Nella pagina /cars/item.php l’utente cliccando sul pulsante di prenota viene riportato alla pagina /cars/rent.php (accessibile anche per link diretto dalla Homepage) controlla  l’esistenza dell’ID della  macchina in sessione, se presente disabilita la SELECT di scelta della macchina, altrimenti resta attiva.
+     - Eseguendo il submit del form lo script PHP controlla l’esistenza nell’array $_REQUEST di una chiave “car_id” in quanto l’utente potrebbe sempre decidere di effettuare il reset del form in /cars/rent.php e  quindi cambiare la macchina scelta tramite il “flusso normale”
+     - Lo script PHP registra la prenotazione e salva l’ID della prenotazione in sessione, così da poter mostrare in modo efficace la pagina di avvenuta prenotazione (/cars/rented.php) senza dover passare parametri  tramite querystring (nonostante questo metodo sia comunque permesso per poter visualizzare le prenotazioni in tempi differiti al processo di prenotazione)
 
     L’alternativa all’uso delle sessioni per questa fase prevedeva l’uso massivo di querystring “imposte dal server” e l’uso di campi hidden nei form per poter salvare i dati
