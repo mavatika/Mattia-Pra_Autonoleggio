@@ -5,26 +5,32 @@ class User {
   private $user = null;
   public $loggedIn = false;
 
-  public function __construct(string $username = '', string $password = '') {
+  public function __construct($username = '', $password = '') {
     if (!empty($username) && !empty($password)) $this->login($username, $password);
     else {
       if (!empty($_SESSION['user'])) $this->set($_SESSION['user']);
     }
   }
   
-  public function login(string $username, string $password) {
-    $db = new Database();
-
-    $user = $db->get('username, password, scope, name, surname', 'users', "WHERE username = '$username'");
-    
-    if (password_verify($password, $user['password'])) {
-      unset($user['password']);
-      $this->user = $user;
+  public function login($username = '', $password = null) {
+    if (Utils::isAssoc($username)) {
+      $this->user = $username;
       $this->loggedIn = true;
       $_SESSION['user'] = $this->serialize();
-    } else throw new PasswordException();
-    
-    $db->close();
+    } else {
+      $db = new Database();
+
+      $user = $db->get('username, password, scope, name, surname', 'users', "WHERE username = '$username'");
+      
+      if (password_verify($password, $user['password'])) {
+        unset($user['password']);
+        $this->user = $user;
+        $this->loggedIn = true;
+        $_SESSION['user'] = $this->serialize();
+      } else throw new PasswordException();
+      
+      $db->close();
+    }
   }
 
   public function serialize() {
@@ -93,7 +99,14 @@ class User {
 
       $db->put($els, 'users');
       $db->close();
-      return true;
+
+      unset($els['password']);
+      unset($els['email']);
+      unset($els['age']);
+      unset($els['city']);
+      unset($els['fav_car']);
+
+      return $els;
     } catch (Exception $e) {
       $e = $e->getMessage();
       $db->close();

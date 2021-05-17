@@ -30,8 +30,8 @@ if (count($_POST) > 0) {
 
     if (count($errors) == 0) {
       $created = User::signup($_REQUEST['username'], $_REQUEST['password'], $_REQUEST['email'], $_REQUEST['name'], $_REQUEST['surname'], $age, $_REQUEST['city'], $_REQUEST['fav_car']);
-      if ($created === true) {
-        $user->login($_REQUEST['username'], $_REQUEST['password']);
+      if (Utils::isAssoc($created)) {
+        $user->login($created);
         header('Location:/');
         exit;
       } else {
