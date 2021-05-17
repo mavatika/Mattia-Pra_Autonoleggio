@@ -44,7 +44,7 @@
 ## Uso delle sessioni
   Le sessioni sono utilizzate per due scopi distinti:
   1. **Mantenimento della sessione di login →** in ogni pagina viene istanziato un oggetto User che nel costruttore verifica che esista una sessione di login attiva, recupera i dati salvati di quest’ultima (nome, cognome, username dell’utente, in quanto necessari in ogni pagina per stampare l’header), altrimenti questo oggetto avrà un attributo *loggedIn* settato a false, permettendo di gestire correttamente i vari casi
-  2. Fase di noleggio →
+  2. **Fase di noleggio** →
      - Utente effettua una ricerca testuale su 3 campi (Brand, Model e Category) del veicolo tramite richiesta GET da pagina Home a pagina /cars
      - Nella pagina /cars gli ID delle macchine sono inseriti come value di tanti <button type=”submit”> con lo stesso name, racchiusi tutti in un grande form contenitore
      - Cliccando sul bottone di submit di una macchina viene richiesta tramite GET la pagina /cars/item.php? la quale salva nella sessione l’ID della macchina recuperato tramite GET, così da non doverlo passare ogni volta tramite richiesta HTTP
