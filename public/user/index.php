@@ -11,6 +11,7 @@ if(!$user->loggedIn) {
 }
 
 $db = new Database();
+$c = $db->getConnection();
 $temp = [];
 
 if (count($_POST) > 0) {
@@ -66,12 +67,15 @@ unset($temp);
 
 if (!empty($_GET['canc'])) {
   try {
-    $car_id = $db->get('car_id', 'rents', "where id = '".$_GET['canc']."'")['car_id'];
+    $rent = $db->get('car_id, state', 'rents', "where id = '".$_GET['canc']."'");
+    $car_id = $rent['car_id'];
     $adminQuery = !$user->isAdmin() ? "user_id ='".$userData['username']."' AND " : '';
     $db->delete('rents',  $adminQuery . "id = '".$_GET['canc']."'");
-    $db->update([
-      'quantity' => 'quantity + 1'
-    ], 'stock', "car_id = '$car_id'");
+    if ($rent['state'] != 'canceled') {
+      $db->update([
+        'quantity' => 'quantity + 1'
+      ], 'stock', "car_id = '$car_id'");
+    }
     $userData['rents_update'] = '<p class="server_message success_el">Rent deleted successfully</p>';
   } catch (Exception $e) {
     $userData['rents_update'] = '<p class="server_message error_el">Rent delete failed</p>';
@@ -96,6 +100,26 @@ if ($user->isAdmin()) {
   } catch (Exception $e) {
     $userData['users_list_update'] = '<p class="server_message error_el">User remove failed</p>';
   }
+
+  try {
+    if (!empty($_GET['setrentstate']) && !empty($_GET['rentvalue'])) {
+      $state = $_GET['rentvalue'];
+      $rent = $_GET['setrentstate'];
+      if ($state == 'confirmed' || $state == 'canceled') {
+
+        $c->begin_transaction();
+        $c->query("UPDATE rents SET state = '$state' WHERE id = $rent");
+        if ($state == 'canceled') $c->query("UPDATE stock SET quantity = quantity + 1 WHERE car_id = ( SELECT car_id FROM rents WHERE id = $rent )");
+
+        $c->commit();
+        $userData['rents_update'] = '<p class="server_message success_el">Rent updated successfully</p>';
+      }
+    }
+  } catch (Exception $e) {
+    $c->rollback();
+    $userData['rents_update'] = '<p class="server_message error_el">An error occured</p>';
+  }
+
   try {
     if (isset($_GET['markcomplete'])) {
       $response = $db->update([

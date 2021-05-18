@@ -37,18 +37,10 @@
             </figure>
             <div class="success_container">
               <figure class="success_icon">
-                <img src="/img/icons/check.svg" alt="Success">
+                <img src="/img/icons/{ rent_state }.svg" alt="{ rent_state }">
               </figure>
               <div class="success_p_container">
-                <p>
-                  You've rented successfully this wonderful <a href="/cars/item.php?id={ car_id }" class="bold" target="_blank">{ brand } { model }</a> in <span class="bold">{ city }</span> for a total of <span class="bold">{ price }€</span>
-                </p>
-                <p>
-                  Your rent lasts <span class="bold">{ duration }</span>, from <span class="bold">{ startDate }</span> to <span class="bold">{ endDate }</span>
-                </p>
-                <p>
-                  ⏰ Remember to be in <a href="https://maps.google.com/?q={ address }" target="_blank" class="bold">{ address }</a> at <span class="bold">9:00AM!</span>
-                </p>
+                { rent_message }
               </div>
             </div>
           </aside>

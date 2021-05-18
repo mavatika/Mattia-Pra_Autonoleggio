@@ -6,6 +6,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  background: transparent;
+  box-shadow: none;
 }
 .cars main .single_car {
   background: white;

@@ -6,13 +6,15 @@ function getRents ($user = null) {
 
     $rents = $user ? 
       $db->get(
-        'rents.id as rentId, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
+        'rents.id as rentId, rents.state as rentState, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
         'cars, cities, rents',
         'WHERE cars.id = rents.car_id AND cities.code = rents.city AND rents.user_id = "'.$user.'"') : 
       $db->get(
-        'rents.id as rentId, rents.user_id, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
+        'rents.id as rentId, rents.user_id, rents.state as rentState, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
         'cars, cities, rents',
         'WHERE cars.id = rents.car_id AND cities.code = rents.city');
+
+    $db->close();
 
     if(Utils::isAssoc($rents)) $rents = [$rents];
 
@@ -28,6 +30,16 @@ function getRents ($user = null) {
         $temp .= '<td>'.$rent['user_id'].'</td>';
       }
 
+      $rentState = $rent['rentState'] == 'idle' && !$user ?
+         '<a href="/user/index.php?setrentstate='.$rent['rentId'].'&amp;rentvalue=confirmed" class="icon_wrapper" title="Confirm rent">
+            <img src="/img/icons/thumbs-up.svg" alt="" role="presentation">
+          </a>
+          <a href="/user/index.php?setrentstate='.$rent['rentId'].'&amp;rentvalue=canceled" class="icon_wrapper" title="Cancel rent">
+            <img src="/img/icons/thumbs-down.svg" alt="" role="presentation">
+          </a>' : '<div class="rent_state icon_wrapper">
+            <img src="/img/icons/'.$rent['rentState'].'.svg" alt="'.$rent['rentState'].'">
+          </div>';
+
       $temp .= 
         '<td>'.$rent['brand'].'</td>
           <td>'.$rent['model'].'</td>
@@ -35,24 +47,24 @@ function getRents ($user = null) {
           <td>'.$startDate->format('d/m/Y').'</td>
           <td>'.$endDate->format('d/m/Y').'</td>
           <td>'.$price.' €</td>
+          <td>'.$rentState.'</td>
           <td>
-            <a href="/user/index.php?canc='.$rent['rentId'].'" class="cancel icon_wrapper" title="Cancel rent">
+            <a href="/user/index.php?canc='.$rent['rentId'].'" class="cancel icon_wrapper" title="Remove rent">
               <img src="/img/icons/x.svg" alt="" role="presentation">
             </a>
           </td>
         </tr>'."\n";
     }
-    $db->close();
   } catch (NotFoundException $e) {
     $temp = errorLine(
-      $user ? 7 : 8, 
+      $user ? 8 : 9, 
       $user ? 
         '<p>You haven\'t rented any car yet</p>
           <a href="/cars" title="Go to the cars list"><span class="bold">Do it now!</span></a>' :
         '<p>There are no rents yet, try to come back later!</p>'
       );
   } catch (Exception $e) {
-    $temp = errorLine($user ? 7 : 11, '<p>An error occured while fetching the rents</p>');
+    $temp = errorLine($user ? 8 : 9, '<p>An error occured while fetching the rents</p>');
   }
   return $temp;
 }

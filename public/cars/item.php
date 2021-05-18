@@ -13,8 +13,9 @@ $car = [];
 $useStatic = false;
 
 try {
-  $car = $db->get('*', 'cars, stock', 'where cars.id = stock.car_id AND cars.id = ' . $_GET['id']);
-  $_SESSION['car_id'] = $_GET['id'];
+  $carID = empty($_GET['id']) ? '-1' : $_GET['id'];
+  $car = $db->get('*', 'cars, stock', "where cars.id = stock.car_id AND cars.id = $carID");
+  $_SESSION['car_id'] = $carID;
 
   $car['car_link'] = $car['quantity'] > 0 ?
     '<a href="/cars/rent.php" class="car_btn primary_btn">RENT THIS CAR</a>' :
