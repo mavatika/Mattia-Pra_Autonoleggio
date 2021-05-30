@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     { common_head }
-    <link rel="stylesheet" href="/css/pages/rent.css">
-    <script defer src="/js/pages/rent.js"></script>
+    <link rel="stylesheet" href="../css/pages/rent.css">
+    <script defer src="../js/pages/rent.js"></script>
     <title>Rent a car | Mattia Prà - Autonoleggio</title>
 </head>
 <body class="rent not_home">
@@ -18,7 +18,7 @@
     </div>
     <div class="rent_section" role="grid">
         <aside>
-            <form action="/cars/rent.php" method="post" id="rent_form">
+            <form action="rent.php" method="post" id="rent_form">
                 { errors }
                 <alternative>
                     <static>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="input_wrapper horizontal">
                                 <label for="bday">Date of birth (You need to be 18 to rent a car):</label>
-                                <input type="date" id="bday" name="bday" autocomplete="bday" value="{ bday }" max="2002-01-01" required>
+                                <input type="date" id="bday" name="bday" autocomplete="bday" value="{ bday }" max="2002-01-01" placeholder="01/30/2002" required>
                             </div>
                         </fieldset>
                     </static>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="input_wrapper">
                         <label for="when">When do you wish to pick up the car?</label>
-                        <input type="date" id="when" name="startDate" value="{ startDate }" min="2021-01-01" required>
+                        <input type="date" id="when" name="startDate" value="{ startDate }" min="2021-01-01" placeholder="09/30/2021" required>
                     </div>
                     <div class="input_wrapper horizontal">
                         <label for="howlong">How long do you wish to keep the car?</label>
@@ -66,7 +66,7 @@
                     </div>
                 </fieldset>
                 <div class="input_wrapper horizontal no_bold">
-                    <label for="readterm">To continue you need to read and accept our <a href="/pdf/terms.pdf" target="_blank">terms and conditions</a></label>
+                    <label for="readterm">To continue you need to read and accept our <a href="../pdf/terms.pdf" target="_blank">terms and conditions</a></label>
                     <input type="checkbox" id="readterm" value="readterm" name="readterm" required>
                 </div>
                 <div class="button_wrapper">
@@ -77,11 +77,11 @@
         </aside>
         <figure role="presentation">
             <picture>
-                <source srcset="/img/pages/rent/right.webp">
-                <img src="/img/pages/rent/right.jpeg" alt="">
+                <source srcset="../img/pages/rent/right.webp">
+                <img src="../img/pages/rent/right.jpeg" alt="">
             </picture>
         </figure>
-        <figure id="car_image" style="background-image: url({ image });">
+        <figure id="car_image" style="background-image: url(../{ image });">
             <figcaption>{ brand } { model }</figcaption>
         </figure>
     </div>

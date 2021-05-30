@@ -1,0 +1,57 @@
+
+.contact .page_bg {
+  background-image: url("../../img/pages/contact/bg.jpg");
+}
+.contact .contact_us, .contact .study_person {
+  padding: 0 5%;
+}
+.contact .contact_us form {
+  float: left;
+  width: 55%;
+}
+.contact .contact_us aside {
+  float: right;
+}
+.contact .contact_us aside .aside_content {
+  background: white;
+  box-shadow: 0 7.5px 15px -3.75px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  position: sticky;
+  top: 400px;
+  padding: 25px 15px;
+}
+.contact .contact_us aside ul {
+  margin: 0;
+  padding-left: 15px;
+}
+.contact .contact_us aside h2 {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .contact .contact_us form, .contact .contact_us aside {
+    float: none;
+  }
+  .contact .contact_us form {
+    width: 100%;
+  }
+  .contact .contact_us aside {
+    width: fit-content;
+    margin: 25px auto;
+    position: static;
+  }
+}
+.contact hr {
+  clear: both;
+  position: relative;
+  top: 40px;
+}
+.contact .study_person {
+  max-width: 600px;
+  width: 100%;
+  margin: 60px auto 0;
+}
+.contact .study_person summary {
+  text-align: center;
+  margin-bottom: 25px;
+}

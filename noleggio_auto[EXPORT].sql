@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 07, 2021 alle 11:27
+-- Creato il: Mag 20, 2021 alle 12:08
 -- Versione del server: 10.4.17-MariaDB
 -- Versione PHP: 7.3.27
 
@@ -105,6 +105,13 @@ CREATE TABLE `messages` (
   `answered` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `messages`
+--
+
+INSERT INTO `messages` (`id`, `user_id`, `object`, `message`, `answered`) VALUES
+(0000000009, 'admin', 'Messaggio di prova', 'Questo è un messaggio di prova,\r\ncontiene degli \"a capo\".\r\n\r\nE anche di più spazi.\r\nMattia Prà\r\n', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -117,15 +124,18 @@ CREATE TABLE `rents` (
   `user_id` varchar(60) NOT NULL,
   `city` char(2) NOT NULL,
   `startDate` date NOT NULL DEFAULT current_timestamp(),
-  `duration` tinyint(4) UNSIGNED NOT NULL DEFAULT 1
+  `duration` tinyint(4) UNSIGNED NOT NULL DEFAULT 1,
+  `state` varchar(30) NOT NULL DEFAULT 'idle'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dump dei dati per la tabella `rents`
 --
 
-INSERT INTO `rents` (`id`, `car_id`, `user_id`, `city`, `startDate`, `duration`) VALUES
-(57, 00000000008, 'admin', 'MU', '2021-05-27', 4);
+INSERT INTO `rents` (`id`, `car_id`, `user_id`, `city`, `startDate`, `duration`, `state`) VALUES
+(66, 00000000004, 'admin', 'TV', '2021-05-29', 8, 'canceled'),
+(65, 00000000005, 'admin', 'MU', '2021-05-30', 14, 'idle'),
+(57, 00000000008, 'admin', 'MU', '2021-05-27', 4, 'confirmed');
 
 -- --------------------------------------------------------
 
@@ -147,8 +157,8 @@ INSERT INTO `stock` (`car_id`, `quantity`) VALUES
 (00000000002, 13),
 (00000000003, 7),
 (00000000004, 2),
-(00000000005, 7),
-(00000000007, 5),
+(00000000005, 6),
+(00000000007, 4),
 (00000000008, 0),
 (00000000009, 0),
 (00000000010, 1);
@@ -236,13 +246,13 @@ ALTER TABLE `cars`
 -- AUTO_INCREMENT per la tabella `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `rents`
 --
 ALTER TABLE `rents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- Limiti per le tabelle scaricate

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     { common_head }
-    <link rel="stylesheet" href="/css/pages/contact.css">
+    <link rel="stylesheet" href="css/pages/contact.css">
     <title>Contact Us | Mattia Prà - Autonoleggio</title>
 </head>
 <body class="contact not_home">
@@ -25,7 +25,7 @@
                 </ul>
             </div>
         </aside>
-        <form action="/contact.php" method="POST" id="contact_form">
+        <form action="#" method="POST" id="contact_form">
             { send_error }
             <alternative>
                 <static>
@@ -57,75 +57,6 @@
             </div>
         </form>
     </div>
-    <hr>
-    <!-- <div class="study_person">
-        <details>
-            <summary>Would you like to answer to some questions about you?</summary>
-            <form action="/api/survey" method="post" id="survey_form">
-                <fieldset class="input_wrapper radio_container">
-                    <legend>Sex:</legend>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="gender" value="m" id="m">
-                        <label for="m">Male</label>
-                    </div>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="gender" value="f" id="f">
-                        <label for="f">Female</label>
-                    </div>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="gender" value="o" id="o">
-                        <label for="o">Other</label>
-                    </div>
-                </fieldset>
-                <div class="input_wrapper">
-                    <label for="years">Age:</label>
-                    <input type="number" id="years" min="0" max="120" step="1">
-                </div>
-                <fieldset class="input_wrapper radio_container horizontal">
-                    <legend>Would you be interest in long-term rentals?</legend>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="longterm_rent" value="y" id="yes">
-                        <label for="yes">Yes</label>
-                    </div>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="longterm_rent" value="n" id="no">
-                        <label for="no">No</label>
-                    </div>
-                </fieldset>
-                <fieldset class="input_wrapper radio_container">
-                    <legend>How do you rate our service?</legend>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="rate" value="1s" id="one">
-                        <label for="one">1* (Bad)</label>
-                    </div>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="rate" value="2s" id="two">
-                        <label for="two">2*</label>
-                    </div>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="rate" value="3s" id="three">
-                        <label for="three">3*</label>
-                    </div>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="rate" value="4s" id="four">
-                        <label for="four">4*</label>
-                    </div>
-                    <div class="radio_wrapper">
-                        <input type="radio" name="rate" value="5s" id="five">
-                        <label for="five">5* (Good)</label>
-                    </div>
-                </fieldset>
-                <div class="input_wrapper">
-                    <label for="not_like">What did you not like about our service?</label>
-                    <textarea id="not_like" placeholder="Write some text here..." rows="5"></textarea>
-                </div>
-                <div class="button_wrapper">
-                    <button class="tertiary_btn" type="reset">Reset</button>
-                    <button class="primary_btn" type="submit">Send</button>
-                </div>
-            </form>
-        </details>
-    </div> -->
 </main>
 { footer }
 </body>

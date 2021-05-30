@@ -6,8 +6,7 @@ class Database {
   public function __construct() {
     $this->conn = @new mysqli(getenv('DB_URL').':'.getenv('DB_PORT'), getenv('DB_USER') , getenv('DB_PSW'), getenv('DB_NAME'));
     if ($this->conn->connect_error) {
-      // echo $this->conn->connect_error;
-      throw new DatabaseException("For devs only: <span class='bold'>you</span> probably forgot to turn on the database duh!🤦‍♂️");
+      throw new DatabaseException("For devs only: Something went wrong during the database connection. Have you filled the <code>.env</code> file correctly?");
     }
   }
   
@@ -23,7 +22,7 @@ class Database {
           return $r;
         }
       } else throw new DatabaseException($this->conn->error);
-    }
+    } else throw new DatabaseException('Database doesn\'t seem to be connected, restart both the database and the server');
   }
 
   public function put(array $ins, string $table) {
@@ -42,7 +41,7 @@ class Database {
         $id = $this->conn->query('SELECT LAST_INSERT_ID()');
         if ($id) return $id->fetch_row()[0];
       } else throw new DatabaseException($this->conn->error, 1);
-    }
+    } else throw new DatabaseException('Database doesn\'t seem to be connected, restart both the database and the server');
   }
 
   public function update(array $upd, string $table, string $where = '') {
@@ -61,7 +60,7 @@ class Database {
         if ($res[1] == 0) return 'update-not-needed';
         if ($res[0] == 1 && $res[1] == 1) return 'success';
       }
-    }
+    } else throw new DatabaseException('Database doesn\'t seem to be connected, restart both the database and the server');
   }
 
   public function delete(string $table, string $where = '') {
@@ -69,7 +68,7 @@ class Database {
       $tmp = $this->conn->query("DELETE FROM $table WHERE $where");
       if (!$tmp) throw new DatabaseException($this->conn->error, 1);
       else if ($this->conn->affected_rows == 0) throw new NotFoundException();
-    }
+    } else throw new DatabaseException('Database doesn\'t seem to be connected, restart both the database and the server');
   }
 
   public function getConnection() {

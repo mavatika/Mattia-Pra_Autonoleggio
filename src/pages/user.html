@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     { common_head }
-    <link rel="stylesheet" href="/css/pages/user.css">
-    <script defer src="/js/pages/user.js"></script>
+    <link rel="stylesheet" href="../css/pages/user.css">
+    <script defer src="../js/pages/user.js"></script>
     <title>{ name } | Mattia Prà - Autonoleggio</title>
 </head>
 <body class="user not_home">
@@ -14,7 +14,7 @@
     <section class="userdata">
       <h2>Personal information</h2>
       { user_update }
-      <form action="/user/index.php" method="POST">
+      <form action="#" method="POST">
         <fieldset>
           <div class="input_wrapper">
             <label>Username</label>
@@ -43,7 +43,7 @@
             <input type="text" id="fav_car" name="fav_car" value="{ fav_car }">
           </div>
         </fieldset>
-        <button class="primary_btn" type="submit">Update</button>
+        <button class="primary_btn" type="submit" name="updateuser">Update</button>
       </form>
     </section>
     <section>
@@ -53,6 +53,7 @@
         <table class="hoverable clickable_table">
           <thead>
             <tr>
+              <th>Rent code</th>
               <th>Brand</th>
               <th>Model</th>
               <th>City</th>

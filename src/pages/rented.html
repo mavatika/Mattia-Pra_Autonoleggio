@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     { common_head } 
-    <link rel="stylesheet" href="/css/pages/rented.css">
+    <link rel="stylesheet" href="../css/pages/rented.css">
     <title>My rent | Mattia Prà - Autonoleggio</title>
 </head>
 <body class="rented not_home">
@@ -13,7 +13,7 @@
       <static>
         <article class="no_rent_given">
           { error }
-          <form action="/cars/rented.php" method="GET">
+          <form action="rented.php" method="GET">
             { should_ask_email }
             <div class="input_wrapper">
               <label for="rent_code">Rent code</label>
@@ -22,7 +22,7 @@
             <div class="request_form_wrapper link_to_page">
               <button type="submit" class="primary_btn">Find my rent</button>
               <p class="link_to_page">
-                <a href="/contact.php">Having problems? <span class="link bold">Contact us!</span></a>
+                <a href="../contact.php">Having problems? <span class="link bold">Contact us!</span></a>
               </p>
             </div>
           </form>
@@ -30,6 +30,7 @@
       </static>
       <dynamic>
         <h1>Thank you, { rent_user }</h1>
+        { common_user }
         <section class="rented">
           <aside class="container information_box">
             <figure>
@@ -37,7 +38,7 @@
             </figure>
             <div class="success_container">
               <figure class="success_icon">
-                <img src="/img/icons/{ rent_state }.svg" alt="{ rent_state }">
+                <img src="../img/icons/{ rent_state }.svg" alt="{ rent_state }">
               </figure>
               <div class="success_p_container">
                 { rent_message }

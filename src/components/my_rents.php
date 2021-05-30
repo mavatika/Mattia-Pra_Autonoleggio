@@ -8,11 +8,11 @@ function getRents ($user = null) {
       $db->get(
         'rents.id as rentId, rents.state as rentState, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
         'cars, cities, rents',
-        'WHERE cars.id = rents.car_id AND cities.code = rents.city AND rents.user_id = "'.$user.'"') : 
+        'WHERE cars.id = rents.car_id AND cities.code = rents.city AND rents.user_id = "'.$user.'" ORDER BY rentId') : 
       $db->get(
         'rents.id as rentId, rents.user_id, rents.state as rentState, cars.brand, cars.model, cities.name as city, rents.startDate, rents.duration, cars.price',
         'cars, cities, rents',
-        'WHERE cars.id = rents.car_id AND cities.code = rents.city');
+        'WHERE cars.id = rents.car_id AND cities.code = rents.city ORDER BY rentId');
 
     $db->close();
 
@@ -31,17 +31,18 @@ function getRents ($user = null) {
       }
 
       $rentState = $rent['rentState'] == 'idle' && !$user ?
-         '<a href="/user/index.php?setrentstate='.$rent['rentId'].'&amp;rentvalue=confirmed" class="icon_wrapper" title="Confirm rent">
-            <img src="/img/icons/thumbs-up.svg" alt="" role="presentation">
+         '<a href=".?setrentstate='.$rent['rentId'].'&amp;rentvalue=confirmed" class="icon_wrapper" title="Confirm rent">
+            <img src="../img/icons/thumbs-up.svg" alt="" role="presentation">
           </a>
-          <a href="/user/index.php?setrentstate='.$rent['rentId'].'&amp;rentvalue=canceled" class="icon_wrapper" title="Cancel rent">
-            <img src="/img/icons/thumbs-down.svg" alt="" role="presentation">
+          <a href=".?setrentstate='.$rent['rentId'].'&amp;rentvalue=canceled" class="icon_wrapper" title="Cancel rent">
+            <img src="../img/icons/thumbs-down.svg" alt="" role="presentation">
           </a>' : '<div class="rent_state icon_wrapper">
-            <img src="/img/icons/'.$rent['rentState'].'.svg" alt="'.$rent['rentState'].'">
+            <img src="../img/icons/'.$rent['rentState'].'.svg" alt="'.$rent['rentState'].'">
           </div>';
 
       $temp .= 
-        '<td>'.$rent['brand'].'</td>
+        '<td>'.$rent['rentId'].'</td>
+          <td>'.$rent['brand'].'</td>
           <td>'.$rent['model'].'</td>
           <td>'.$rent['city'].'</td>
           <td>'.$startDate->format('d/m/Y').'</td>
@@ -49,22 +50,22 @@ function getRents ($user = null) {
           <td>'.$price.' €</td>
           <td>'.$rentState.'</td>
           <td>
-            <a href="/user/index.php?canc='.$rent['rentId'].'" class="cancel icon_wrapper" title="Remove rent">
-              <img src="/img/icons/x.svg" alt="" role="presentation">
+            <a href=".?canc='.$rent['rentId'].'" class="cancel icon_wrapper" title="Remove rent">
+              <img src="../img/icons/x.svg" alt="" role="presentation">
             </a>
           </td>
         </tr>'."\n";
     }
   } catch (NotFoundException $e) {
     $temp = errorLine(
-      $user ? 8 : 9, 
+      $user ? 9 : 10, 
       $user ? 
         '<p>You haven\'t rented any car yet</p>
-          <a href="/cars" title="Go to the cars list"><span class="bold">Do it now!</span></a>' :
+          <a href="../cars" title="Go to the cars list"><span class="bold">Do it now!</span></a>' :
         '<p>There are no rents yet, try to come back later!</p>'
       );
   } catch (Exception $e) {
-    $temp = errorLine($user ? 8 : 9, '<p>An error occured while fetching the rents</p>');
+    $temp = errorLine($user ? 9 : 10, '<p>An error occured while fetching the rents</p>');
   }
   return $temp;
 }
@@ -84,17 +85,17 @@ function getAdminCars() {
           <td>'.$car['model'].'</td>
           <td>'.$car['age'].'</td>
           <td>
-            <a '. ($car['quantity'] > 0 ? 'href="/user/index.php?carquantity='.$car['car_id'].'&amp;q=-1"' : 'disabled') .' class="set_quantity icon_wrapper" title="Decrease">
+            <a '. ($car['quantity'] > 0 ? 'href=".?carquantity='.$car['car_id'].'&amp;q=-1"' : 'disabled') .' class="set_quantity icon_wrapper" title="Decrease">
               -
             </a>
             <span>'.$car['quantity'].'</span>
-            <a href="/user/index.php?carquantity='.$car['car_id'].'&amp;q=1" class="set_quantity icon_wrapper" title="Increase">
+            <a href=".?carquantity='.$car['car_id'].'&amp;q=1" class="set_quantity icon_wrapper" title="Increase">
               +
             </a>
           </td>
           <td>
-            <a href="/user/index.php?delete='.$car['car_id'].'" class="cancel icon_wrapper" title="Remove car">
-              <img src="/img/icons/x.svg" alt="" role="presentation">
+            <a href=".?delete='.$car['car_id'].'" class="cancel icon_wrapper" title="Remove car">
+              <img src="../img/icons/x.svg" alt="" role="presentation">
             </a>
           </td>
         </tr>'."\n";
@@ -128,8 +129,8 @@ function getUsersList() {
           <td>'.(empty($user['city']) ? '-' : $user['city']).'</td>
           <td>'.(empty($user['fav_car']) ? '-' : $user['fav_car']).'</td>
           <td>
-            <a href="/user/index.php?deleteuser='.$user['username'].'" class="cancel icon_wrapper" title="Remove user">
-              <img src="/img/icons/x.svg" alt="" role="presentation">
+            <a href=".?deleteuser='.$user['username'].'" class="cancel icon_wrapper" title="Remove user">
+              <img src="../img/icons/x.svg" alt="" role="presentation">
             </a>
           </td>
         </tr>'."\n";
@@ -159,7 +160,7 @@ function getMessages() {
           <td>'.(!empty($msg['object']) ? $msg['object'] : $msg['message']).'</td>
           <td>
             <a href="mailto:'.$msg['email'].'?subject=RE:%20'.$msg['object'].'" class="cancel icon_wrapper" title="Reply">
-              <img src="/img/icons/reply.svg" alt="" role="presentation">
+              <img src="../img/icons/reply.svg" alt="" role="presentation">
             </a>
           </td>
         </tr>'."\n";

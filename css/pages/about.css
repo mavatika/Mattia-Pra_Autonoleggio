@@ -1,0 +1,88 @@
+.about .page_bg {
+  background-image: url("../../img/pages/about/bg.jpg");
+}
+.about .article_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 60px;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  padding: 20px 60px 40px;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .about .article_wrapper {
+    padding: 20px 30px 40px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about .article_wrapper {
+    padding: 20px;
+  }
+}
+@media all and (-ms-high-contrast: none) {
+  .about .article_wrapper article {
+    margin: 0 30px;
+  }
+}
+.about .article_wrapper article:first-of-type {
+  -ms-grid-column: 1;
+}
+.about .article_wrapper article:nth-of-type(2) {
+  -ms-grid-column: 2;
+}
+.about .article_wrapper article:last-of-type {
+  -ms-grid-column: 3;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .about .article_wrapper {
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-columns: 1fr 1fr;
+    -ms-grid-rows: 1fr 1fr;
+  }
+  .about .article_wrapper article:first-of-type {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+  }
+  .about .article_wrapper article:nth-of-type(2) {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+  }
+  .about .article_wrapper article:last-of-type {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    -ms-grid-column-span: 2;
+    grid-area: 2/1/3/3;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about .article_wrapper {
+    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr 1fr 1fr;
+  }
+  .about .article_wrapper article {
+    margin: 0;
+  }
+  .about .article_wrapper article:first-of-type {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+  }
+  .about .article_wrapper article:nth-of-type(2) {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+  }
+  .about .article_wrapper article:last-of-type {
+    -ms-grid-column: 1;
+    -ms-grid-row: 3;
+  }
+}
+.about .article_wrapper article h2 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+.about .article_wrapper article p {
+  text-align: justify;
+}
+.about .article_wrapper article figure {
+  margin: 25px auto 0;
+}

@@ -1,0 +1,74 @@
+.page_bg {
+  background-image: url("img/pages/user/bg.jpg");
+}
+
+.user section {
+  max-width: 800px;
+  margin: 40px auto;
+}
+.user section h2 {
+  padding-left: 15px;
+}
+
+.section_title_2side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section_title_2side > * {
+  width: max-content;
+  height: max-content;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.table_container {
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+table th {
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+
+table tbody td {
+  padding: 10px 5px;
+}
+
+.user a[disabled] {
+  background-color: rgba(0,0,0,.25);
+}
+.user a[disabled]:hover, .user a[disabled]:focus {
+  transform: none !important;
+  color: black im !important;
+}
+
+.userdata form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: ". ." "UpdateBtn UpdateBtn";
+  grid-column-gap: 40px;
+  column-gap: 40px;
+}
+
+.userdata form button {
+  grid-area: UpdateBtn;
+  width: max-content;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .userdata form {
+    grid-template-columns: 1fr 1.25fr;
+    grid-column-gap: 20px;
+    column-gap: 20px;
+  }
+}

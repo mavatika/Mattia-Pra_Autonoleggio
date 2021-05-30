@@ -49,7 +49,7 @@ class Template {
 
   }
 
-  public function empty() {
+  public function resetPage() {
     $this->page = '';
   }
 
@@ -83,7 +83,7 @@ class Template {
 
   public static function writeImageToDir($file, string $dir) {
     if (ini_get('file_uploads') != 1) throw new DieProgramException('Your <i>php.ini</i> doesn\'t allow files upload, please fix it');
-    $dir = $_SERVER['DOCUMENT_ROOT'] . '/public' .$dir;
+    $dir = $_SERVER['DOCUMENT_ROOT'] . $dir;
     $filename = md5(basename($file['name'])) . '.' . strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     $target = $dir . $filename;
     $check = getimagesize($file['tmp_name']); // tmp_name tiene il path temporaneo del file
@@ -96,14 +96,15 @@ class Template {
   }
 
   private static function commonHead() {
+    $deepness = str_repeat('../', Utils::getRequestDeepness());
     return '
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="/css/common.css">
-      <link rel="shortcut icon" sizes="16x16" href="/img/favicon.ico">
-      <script defer src="/js/polyfill.js"></script>
-      <script src="/js/main.js"></script>
+      <link rel="stylesheet" href="'.$deepness.'css/common.css">
+      <link rel="shortcut icon" sizes="16x16" href="'.$deepness.'img/favicon.ico">
+      <script defer src="'.$deepness.'js/polyfill.js"></script>
+      <script src="'.$deepness.'js/main.js"></script>
     ';
   }
   

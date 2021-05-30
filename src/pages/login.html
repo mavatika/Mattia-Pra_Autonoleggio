@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     { common_head }
-    <link rel="stylesheet" href="/css/pages/login_signup.css">
+    <link rel="stylesheet" href="../css/pages/login_signup.css">
     <title>Login | Mattia Prà - Autonoleggio</title>
 </head>
 <body class="login_signup not_home">
@@ -14,7 +14,7 @@
       <h1>
         Log in to Mattia Prà - Autonoleggio
       </h1>
-      <form action="/user/login.php" method="post">
+      <form action="#" method="post">
         { to }
         { errors }
         </alternative>
@@ -26,13 +26,17 @@
           <label for="password">Password</label>
           <input type="password" id="password" name="password" maxlength="50" minlength="3" autocomplete="current-password" required>
         </div>
+        <div class="input_wrapper horizontal no_bold">
+          <label for="keeplogged">Keep me logged in</label>
+          <input type="checkbox" id="keeplogged" name="keeplogged">
+        </div>
         <div class="button_wrapper">
           <button class="tertiary_btn" type="reset">Reset</button>
           <button class="primary_btn" type="submit">Log in</button>
       </div>
       </form>
       <p class="link_to_page">
-        <a href="/user/signup.php">Don't have an account? <span class="link bold">Click Here!</span></a>
+        <a href="signup.php">Don't have an account? <span class="link bold">Click Here!</span></a>
       </p>
     </main>
 

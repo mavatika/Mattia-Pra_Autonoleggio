@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   { common_head }
-  <link rel="stylesheet" href="/css/pages/user.css">
-  <link rel="stylesheet" href="/css/pages/admin.css">
-  <script defer src="/js/pages/user.js"></script>
+  <link rel="stylesheet" href="../css/pages/user.css">
+  <link rel="stylesheet" href="../css/pages/admin.css">
+  <script defer src="../js/pages/user.js"></script>
   <title>{ name } - Admin | Mattia Prà - Autonoleggio</title>
 </head>
 <body class="user admin not_home">
@@ -18,31 +18,31 @@
         <ul>
           <li><a href="#personal_information">
             <span class="icon_wrapper">
-              <img src="/img/icons/info.svg" alt="Info">
+              <img src="../img/icons/info.svg" alt="Info">
             </span>
             <span>Personal information</span>
           </a></li>
           <li><a href="#cars_available">
             <span class="icon_wrapper">
-              <img src="/img/icons/cars.svg" alt="Cars">
+              <img src="../img/icons/cars.svg" alt="Cars">
             </span>
             <span>Cars available</span>
           </a></li>
           <li><a href="#all_the_rents">
             <span class="icon_wrapper">
-              <img src="/img/icons/dollar-sign.svg" alt="Rents">
+              <img src="../img/icons/dollar-sign.svg" alt="Rents">
             </span>
             <span>All the rents</span>
           </a></li>
           <li><a href="#users">
             <span class="icon_wrapper">
-              <img src="/img/icons/users.svg" alt="Users">
+              <img src="../img/icons/users.svg" alt="Users">
             </span>
             <span>Users</span>
           </a></li>
           <li><a href="#messages">
             <span class="icon_wrapper">
-              <img src="/img/icons/inbox.svg" alt="Messages">
+              <img src="../img/icons/inbox.svg" alt="Messages">
             </span>
             <span>Messages</span>
           </a></li>
@@ -52,7 +52,7 @@
         <section class="userdata" id="personal_information">
           <h2>Personal information</h2>
           { user_update }
-          <form action="/user/index.php" method="POST">
+          <form action="#" method="POST">
             <fieldset>
               <div class="input_wrapper">
                 <label>Username</label>
@@ -115,6 +115,7 @@
               <thead>
                 <tr>
                   <th>Username</th>
+                  <th>Rent code</th>
                   <th>Brand</th>
                   <th>Model</th>
                   <th>City</th>
@@ -182,10 +183,10 @@
   <div class="overlay">
     <div class="overlay_inner">
       <button class="close" tabindex="0" title="Close banner">
-        <img src="/img/icons/x.svg" alt="" role="presentation">
+        <img src="../img/icons/x.svg" alt="" role="presentation">
       </button>
       <template id="form_template">
-        <form action="/user/index.php" method="POST" class="create_record" enctype="multipart/form-data">
+        <form action="." method="POST" class="create_record" enctype="multipart/form-data">
           <div id="table_placeholder"></div>
           <template id="adduser">
             <div class="input_wrapper">

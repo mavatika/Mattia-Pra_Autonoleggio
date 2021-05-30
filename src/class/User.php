@@ -9,6 +9,11 @@ class User {
     if (!empty($username) && !empty($password)) $this->login($username, $password);
     else {
       if (!empty($_SESSION['user'])) $this->set($_SESSION['user']);
+      else if (!empty($_COOKIE['user_tkn'])) {
+        try {
+          $this->login(Token::decode($_COOKIE['user_tkn'], getenv('TOKEN_KEY'))['username']);
+        } catch (Exception $e) { Utils::deleteCookie('user_tkn'); }
+      }
     }
   }
   
@@ -22,7 +27,7 @@ class User {
 
       $user = $db->get('username, password, scope, name, surname', 'users', "WHERE username = '$username'");
       
-      if (password_verify($password, $user['password'])) {
+      if ($password === null || password_verify($password, $user['password'])) {
         unset($user['password']);
         $this->user = $user;
         $this->loggedIn = true;
@@ -45,8 +50,10 @@ class User {
     $db = new Database();
     $u = [];
     $city = Utils::generateCityCode($city);
-    if (!empty($city)) $u['city'] = "'$city'";
-    if (!empty($fav_car)) $u['fav_car'] = "'$fav_car'";
+    if ($city !== null) $u['city'] = "'$city'";
+    if ($fav_car !== null) {
+      $u['fav_car'] = "'".ucwords($fav_car)."'";
+    }
     $username = $this->user['username'];
     $user = $db->update($u, 'users', "username = '$username'");
     
@@ -68,6 +75,7 @@ class User {
   public function logout() {
     $this->user = null;
     $this->loggedIn = false;
+    Utils::deleteCookie('user_tkn');
   }
 
   public function isAdmin() {
