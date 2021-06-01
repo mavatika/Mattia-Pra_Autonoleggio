@@ -81,20 +81,6 @@ class Template {
     $this->page = substr($this->page, 0, $offset) . $heads . substr($this->page, $offset);
   }
 
-  public static function writeImageToDir($file, string $dir) {
-    if (ini_get('file_uploads') != 1) throw new DieProgramException('Your <i>php.ini</i> doesn\'t allow files upload, please fix it');
-    $dir = $_SERVER['DOCUMENT_ROOT'] . $dir;
-    $filename = md5(basename($file['name'])) . '.' . strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-    $target = $dir . $filename;
-    $check = getimagesize($file['tmp_name']); // tmp_name tiene il path temporaneo del file
-    if ($check === false || !in_array($check['mime'], ['image/png', 'image/gif', 'image/bpm', 'image/tiff', 'image/svg+xml'])) throw new FileUploadException('File not an image with transparent background');
-    if (file_exists($target)) return $filename;
-    if ($file['size'] > 20 * 1024 * 1024) throw new FileUploadException('Image is too big');
-
-    if (move_uploaded_file($file['tmp_name'], $target)) return $filename;
-    else throw new FileUploadException();
-  }
-
   private static function commonHead() {
     $deepness = str_repeat('../', Utils::getRequestDeepness());
     return '

@@ -33,7 +33,7 @@ if (count($_POST) > 0) {
         $cc = [];
         if (!empty($_FILES['image'])) {
           $d = '/img/pages/cars/cars/';
-          $cc['image'] = $d . Template::writeImageToDir($_FILES['image'], $d);
+          $cc['image'] = $d . Utils::writeImageToDir($_FILES['image'], $d);
         }
         foreach ($_POST as $column => $value) {
           if (in_array($column, ['brand', 'model', 'price', 'engine', 'seats', 'transmission', 'short_description', 'category', 'speed', 'gps', 'tank', 'description', 'img1', 'img2', 'img3', 'age']))
