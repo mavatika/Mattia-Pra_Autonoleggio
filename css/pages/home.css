@@ -126,6 +126,7 @@
 .homepage section .branch_img {
   width: 100%;
   padding: 20px 35px;
+  align-self: center;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .homepage section .branch_img {
