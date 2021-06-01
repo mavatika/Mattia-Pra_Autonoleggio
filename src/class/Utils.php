@@ -47,6 +47,7 @@ final class Utils {
   public static function writeImageToDir($file, string $dir) {
     if (ini_get('file_uploads') != 1) throw new DieProgramException('Your <i>php.ini</i> doesn\'t allow files upload, please fix it');
     $dir = $_SERVER['DOCUMENT_ROOT'] . $dir;
+    if (!is_writable($dir)) throw new DieProgramException('Your upload folder doesn\'t have write permissions');
     $filename = md5(basename($file['name'])) . '.' . strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
     $target = $dir . $filename;
     $check = getimagesize($file['tmp_name']); // tmp_name tiene il path temporaneo del file
