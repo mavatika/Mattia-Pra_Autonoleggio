@@ -1,8 +1,9 @@
 <?php
 class Token {
   public static function encode (array $payload, string $key, array $options = null) {
-    if (empty($payload)) throw new Exception ('Payload is required');
-    if (empty($key)) throw new Exception ('Key is required');
+    if (empty($payload)) throw new TokenException ('Payload is required');
+    if (empty($key)) throw new TokenException ('Key is required');
+    if (!empty($options['expiresIn']) && !is_int($options['expiresIn'])) throw new TokenException ('expiresIn option must be of the type integer');
     
     $header = [
       'alg' => 'sha256',
@@ -24,22 +25,23 @@ class Token {
   }
 
   public static function decode (string $token, string $key) {
-    if (empty($key)) throw new Exception ('Key is required');
+    if (empty($key)) throw new TokenException ('Key is required');
 
-    @list($header_base, $payload_base, $sign) = explode('.', $token);
+    $exploded = explode('.', $token);
+    if (count($exploded) != 3) throw new TokenException('Token is miseconcoded');
 
-    if (empty($header_base) || empty($payload_base) || empty($sign)) throw new Exception('Token is miseconcoded');
+    list($header_base, $payload_base, $sign) = $exploded;
 
     $header = json_decode(base64_decode($header_base), true);
     $payload = json_decode(base64_decode($payload_base), true);
 
-    if ($header['alg'] != 'sha256') throw new Exception('Token algorithm not supported');    
+    if ($header['alg'] != 'sha256') throw new TokenException('Token algorithm not supported');    
 
     $signature = hash_hmac($header['alg'], "$header_base.$payload_base", $key);
-    if ($sign != $signature) throw new Exception('Signature invalid');
+    if ($sign != $signature) throw new TokenException('Signature invalid');
 
-    if (empty($payload['iat']) || !empty($payload['iat']) && $payload['iat'] > time()) throw new Exception('The token is corrupted');
-    if (!empty($payload['exp']) && $payload['exp'] < time()) throw new Exception('The token is expired');
+    if (empty($payload['iat']) || (!empty($payload['iat']) && $payload['iat'] > time())) throw new TokenException('The token is corrupted');
+    if (!empty($payload['exp']) && $payload['exp'] < time()) throw new TokenException('The token is expired');
 
     unset($payload['iat']);
     unset($payload['exp']);

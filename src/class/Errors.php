@@ -52,6 +52,12 @@ class FileUploadException extends Exception {
   }
 }
 
+class TokenException extends Exception {
+  public function __construct(string $msg = 'Error in token encoding/decoding') {
+    parent::__construct($msg);
+  }
+}
+
 class DieProgramException extends Exception {
   public function __construct(string $msg = 'A fatal error occured') {
     parent::__construct($msg);
