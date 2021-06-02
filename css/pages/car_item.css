@@ -127,6 +127,7 @@
 }
 .car_item #car_details .car_images figure img {
   object-fit: cover;
+  height: 100%;
 }
 @media all and (-ms-high-contrast: none) {
   .car_item #car_details .car_images {
