@@ -6,7 +6,7 @@ class Database {
   public function __construct() {
     $this->conn = @new mysqli(getenv('DB_URL').':'.getenv('DB_PORT'), getenv('DB_USER') , getenv('DB_PSW'), getenv('DB_NAME'));
     if ($this->conn->connect_error) {
-      throw new DatabaseException("For devs only: Something went wrong during the database connection. Have you filled the <code>.env</code> file correctly?");
+      throw new DatabaseException("For devs only: Something went wrong during the database connection.<br>Have you created the database and filled the <code>.env</code> file correctly?");
     }
   }
   
