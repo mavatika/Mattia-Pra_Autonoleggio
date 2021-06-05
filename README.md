@@ -7,19 +7,7 @@
   È necessario scrivere i dettagli del database (host, porta, username e password, nome del database) nel file .env (sintassi CHIAVE=VALORE) situato nella root.
   Il database è composto da 6 tabelle abbastanza semplici --> importare dal backup 'noleggio_auto[EXPORT].sql'.
 
-  Per importare il database: `mysql -u username -p database_name < noleggio_auto[EXPORT].sql`
-
-  Nel file .env è presente un parametro `TOKEN_KEY`: si tratta della chiave di cifratura usata nell'algoritmo di hashing (MD5) durante la generazione dei token delle prenotazioni.
-
-  Per il corretto funzionamento è richiesto impostare nel file httpd.conf questi valori:
-  ```bash
-  DocumentRoot "C:/xampp/htdocs/path/alla/cartella"
-  <Directory "C:/xampp/htdocs/path/alla/cartella">
-  ```
-  Se ciò non venisse fatto PHP e il rewrite degli URLs non avverrebbe correttamente, risultando in un non funzionamento del sito.
-  Il sito sfrutta una semplice regola di rewrite degli URLs alla cartella /public per rendere un po’ più sicuro l’accesso ai files.
-  
-  Per usufruire del sito, navigare su [Localhost root](http://localhost/)
+  Nel file .env è presente un parametro `TOKEN_KEY`: si tratta della chiave di cifratura usata nell'algoritmo di hashing (SHA256) durante la generazione dei token delle prenotazioni.
 
 ## Spiegazioni delle classi:  
   ### Token:
