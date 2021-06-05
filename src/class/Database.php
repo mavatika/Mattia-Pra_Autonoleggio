@@ -31,6 +31,7 @@ class Database {
       $values = '';
       foreach ($ins as $column => $value) {
         $insert .= $column . ', ';
+        if (is_null($value)) $value = 'null';
         if (!is_numeric($value)) $value = "'" . $this->conn->real_escape_string($value) . "'";
         $values .= $value.', ';
       }

@@ -122,8 +122,25 @@ class User {
     }
   }
 
-  public static function createTemp($name, $surname, $email, $age = null) {
+  public static function createTemp($name, $surname, $email, $age = 0) {
     $db = new Database();
+    $created = true;
+
+    try {
+      $userData = self::create($db, $name, $surname, $email, $age);
+    } catch (DatabaseException $e) {
+      $userData = $db->get('*', 'users', "WHERE username = '".$_REQUEST['email']."'");
+      unset($userData['password']);
+      $created = false;
+    }
+    $db->close();
+    return [
+      'data' => $userData,
+      'created' => $created
+    ];
+  }
+
+  private static function create($db, $name, $surname, $email, $age) {
     $els = [
       'username' => $email,
       'email' => $email,
@@ -133,7 +150,6 @@ class User {
       'age' => $age
     ];
     $db->put($els, 'users');
-    $db->close();
     return $els;
   }
 }

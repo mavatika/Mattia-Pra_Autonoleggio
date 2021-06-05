@@ -24,13 +24,9 @@ if (count($_POST) > 0) {
         $bday = new DateTime($_REQUEST['bday']);
         $now = new DateTime();
         $age = $now->diff($bday)->y;
-        try {
-          $userData = User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email'], $age);
-        } catch (DatabaseException $e) {
-          $userData = $db->get('*', 'users', "WHERE username = '".$_REQUEST['email']."'");
-          $_SESSION['temp_user_back'] = true;
-          unset($userData['password']);
-        }
+        $userData = User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email'], $age);
+        $_SESSION['temp_user_back'] = !$userData['created']; 
+        $userData = $userData['data']; 
         $_SESSION['temp_user'] = $userData['username'];
       } else {
         $userData = $user->getUser();

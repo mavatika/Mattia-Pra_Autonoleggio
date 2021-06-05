@@ -9,7 +9,7 @@ $user = new User();
 if (count($_POST) > 0) {
   try {
     $db = new Database();
-    $userData = $user->loggedIn ? $user->getUser() : User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email']);
+    $userData = $user->loggedIn ? $user->getUser() : User::createTemp($_REQUEST['name'], $_REQUEST['surname'], $_REQUEST['email'])['data'];
     $db->put([
       'user_id' => $userData['username'],
       'object' => $_REQUEST['obj'],
