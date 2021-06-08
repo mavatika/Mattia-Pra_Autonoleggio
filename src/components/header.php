@@ -15,7 +15,7 @@ $userLogged = empty($_SESSION['user']) ?
 return [
   'template' => '<header>
     <div class="logo" aria-roledescription="logo link">
-      <a href="'.$_SERVER['DOCUMENT_ROOT'].'"><img src="'.$deepness.'img/common/logo.png" alt="Go to the homepage" height="80"></a>
+      <a href="'.$deepness.'index.php"><img src="'.$deepness.'img/common/logo.png" alt="Go to the homepage" height="80"></a>
     </div>
     <div class="hamburger" tabindex="0" role="button">
       <div class="hamburger_inner"></div>

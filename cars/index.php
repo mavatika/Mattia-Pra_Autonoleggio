@@ -57,7 +57,7 @@ if (count($cars) > 0) {
   <div class='link_to_page'>
     <h3>We're sorry! We haven't found anything that matched '".$_GET['filter']."'</h3>
     <p>
-      <a href='/cars/'>Try giving a look at our <span class='link bold'>full motor pool!</span></a>
+      <a href='index.php'>Try giving a look at our <span class='link bold'>full motor pool!</span></a>
     </p>
   </div>
 ";

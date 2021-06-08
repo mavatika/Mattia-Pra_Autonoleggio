@@ -62,7 +62,7 @@ class Template {
   }
   private function getPlaceholdersArray() {
     preg_match_all(self::REGEX, $this->page, $matches);
-    return $matches = $matches[0];
+    return $matches[0];
   }
   private function getTextBetweenTags(string $all, string $tag) {
     $open = '<' . $tag . '>';
